@@ -1,99 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sri Ganesh Xerox Centre</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom right, #fff3e0, #ffe0b2);
-      text-align: center;
-      color: #333;
-    }
-    header {
-      background: #e65100;
-      color: white;
-      padding: 20px;
-    }
-    .logo-circle {
-      background: white;
-      color: #e65100;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      border: 4px solid gold;
-    }
-    section {
-      padding: 40px 20px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      margin: 10px;
-      border-radius: 30px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-    }
-    .orange { background: #e65100; }
-    .green { background: #25D366; }
-    footer {
-      background: #e65100;
-      color: white;
-      padding: 15px;
-    }
-    iframe {
-      width: 100%;
-      max-width: 600px;
-      height: 350px;
-      border-radius: 15px;
-      border: none;
-      margin-top: 20px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Ganesh Xerox Centre</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#fff8f0;
+text-align:center;
+}
+
+header{
+background:#e65100;
+color:white;
+padding:30px;
+}
+
+h1{
+margin:0;
+font-size:28px;
+}
+
+.tagline{
+font-size:16px;
+margin-top:5px;
+}
+
+section{
+padding:40px 20px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 25px;
+margin:10px;
+border-radius:30px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+}
+
+.call{background:#e65100;}
+.whatsapp{background:#25D366;}
+
+.services{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-top:20px;
+}
+
+.card{
+background:white;
+padding:15px 20px;
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+width:200px;
+}
+
+iframe{
+width:100%;
+max-width:600px;
+height:350px;
+border-radius:15px;
+border:none;
+}
+
+footer{
+background:#e65100;
+color:white;
+padding:15px;
+margin-top:30px;
+}
+
+.float{
+position:fixed;
+width:60px;
+height:60px;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+border-radius:50%;
+text-align:center;
+font-size:28px;
+line-height:60px;
+box-shadow:2px 2px 5px rgba(0,0,0,0.3);
+text-decoration:none;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo-circle">🕉</div>
-  <h1>SRI GANESH XEROX CENTRE</h1>
-  <p>In front of New Court, Paralakhemundi, Gajapati, Odisha - 761200</p>
-  <p>📞 +91 8917699445</p>
+<h1>🕉 SRI GANESH XEROX CENTRE</h1>
+<p class="tagline">In front of New Court, Paralakhemundi, Odisha - 761200</p>
+<p>📞 +91 8917699445</p>
 </header>
 
 <section>
-  <h2>Fast & Reliable Printing Services</h2>
-  <p>Xerox, Printing, Scanning, Lamination & Online Services – All in One Place</p>
-  <a class="btn orange" href="tel:+918917699445">Call Now</a>
-  <a class="btn green" href="https://wa.me/918917699445" target="_blank">Chat on WhatsApp</a>
+<h2>Fast & Reliable Printing Services</h2>
+<p>All your document solutions in one place.</p>
+
+<a class="btn call" href="tel:+918917699445">Call Now</a>
+<a class="btn whatsapp" href="https://wa.me/918917699445" target="_blank">Chat on WhatsApp</a>
 </section>
 
 <section>
-  <h2>Our Services</h2>
-  <p>✔ Xerox & Printing (B/W & Color)</p>
-  <p>✔ Scanning</p>
-  <p>✔ Online Form Filling</p>
-  <p>✔ Aadhaar & PAN Services</p>
+<h2>Our Services</h2>
+
+<div class="services">
+<div class="card">✔ Xerox (B/W & Color)</div>
+<div class="card">✔ Printing</div>
+<div class="card">✔ Scanning</div>
+<div class="card">✔ Lamination</div>
+<div class="card">✔ Online Form Filling</div>
+<div class="card">✔ Aadhaar & PAN Services</div>
+</div>
+
 </section>
 
 <section>
-  <h2>Find Us Here</h2>
-  <iframe
-    src="https://www.google.com/maps?q=In+front+of+New+Court,+Paralakhemundi,+Gajapati,+Odisha+761200&output=embed">
-  </iframe>
+<h2>Find Us On Map</h2>
+<iframe src="https://www.google.com/maps?q=Paralakhemundi%20Gajapati%20Odisha&output=embed"></iframe>
 </section>
 
 <footer>
-  © 2026 Sri Ganesh Xerox Centre. All Rights Reserved.
+© 2026 Sri Ganesh Xerox Centre. All Rights Reserved.
 </footer>
+
+<a href="https://wa.me/918917699445" class="float" target="_blank">💬</a>
 
 </body>
 </html>
