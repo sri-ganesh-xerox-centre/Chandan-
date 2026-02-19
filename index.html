@@ -53,6 +53,30 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
+
+/* Premium Online Form Fillup Options */
+.formOptions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:15px;
+}
+.option{
+  padding:10px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#222,#111);
+  border:1px solid #FFD700;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 0 10px rgba(255,215,0,0.2);
+  font-weight:500;
+}
+.option:hover{
+  background:linear-gradient(135deg,#FFD700,#ffb347);
+  color:black;
+  box-shadow:0 0 25px rgba(255,215,0,0.8);
+  transform:translateY(-3px);
+}
 </style>
 </head>
 <body>
@@ -74,14 +98,34 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <section class="section">
 <h2 class="gold">Our Services & Prices</h2>
 <div class="container">
+
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Xerox%20service." target="_blank">📄 Xerox<br><br><strong>₹2 per page</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Black%20and%20White%20printing." target="_blank">🖨 Black & White Printing<br><br><strong>₹5 per page</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Colour%20printing." target="_blank">🎨 Colour Printing<br><br><strong>₹10 per page</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Lamination%20service." target="_blank">📑 Lamination<br><br><strong>₹30 per page</strong></a>
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Online%20Form%20Fillup%20service." target="_blank">🖥 Online Form Fillup<br><br><strong>₹150 per form</strong></a>
+
+<!-- PREMIUM ONLINE FORM FILLUP -->
+<div class="card" id="onlineFormCard">
+  🖥 Online Form Fillup<br><br>
+  <strong>₹150 per form</strong>
+  <div class="formOptions">
+    <div class="option" onclick="sendForm('Cast Certificate')">📜 Cast Certificate</div>
+    <div class="option" onclick="sendForm('Residence Certificate')">🏠 Residence Certificate</div>
+    <div class="option" onclick="sendForm('Income Certificate')">💰 Income Certificate</div>
+    <div class="option" onclick="sendForm('Legal Heir')">🧾 Legal Heir</div>
+    <div class="option" onclick="sendForm('Pan Card')">🆔 Pan Card</div>
+    <div class="option" onclick="sendForm('Labour Card')">⚒ Labour Card</div>
+    <div class="option" onclick="sendForm('Police Verification')">👮 Police Verification</div>
+    <div class="option" onclick="sendForm('DL')">🚗 Driving License</div>
+    <div class="option" onclick="sendForm('New Current Connection')">🔌 New Current Connection</div>
+    <div class="option" onclick="sendForm('Other')">✏️ Other</div>
+  </div>
+</div>
+
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20DTP%20service%20(English%20or%20Odia)." target="_blank">🖥 DTP (English ₹50 | Odia ₹80)<br><br><small>Price varies by content</small></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank">📸 Passport Photo<br><br><strong>₹50</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank">📂 Spiral Binding<br><br><strong>Starting ₹150</strong></a>
+
 </div>
 </section>
 
@@ -109,7 +153,7 @@ function calculate(){
   document.getElementById("result").innerHTML="Total Price: ₹"+total;
 }
 
-// Fade-in animation for Thank You section on scroll
+// Fade-in animation for Thank You section
 window.addEventListener('scroll', function(){
   var thankSection = document.getElementById('thankYouSection');
   var position = thankSection.getBoundingClientRect().top;
@@ -118,6 +162,13 @@ window.addEventListener('scroll', function(){
     thankSection.classList.add('visible');
   }
 });
+
+// WhatsApp redirect for Online Form Fillup
+function sendForm(service){
+  var message = encodeURIComponent("Hello, I want to apply for: " + service + " from Sri Ganesh Xerox Centre.");
+  var whatsappURL = "https://wa.me/918917699445?text=" + message;
+  window.open(whatsappURL, "_blank");
+}
 </script>
 
 <!-- WHY CHOOSE US -->
@@ -148,7 +199,7 @@ window.addEventListener('scroll', function(){
 <a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
 </section>
 
-<!-- THANK YOU SECTION (at bottom) -->
+<!-- THANK YOU SECTION -->
 <section id="thankYouSection" class="section fade-in" style="background:#000; padding:50px 20px;">
   <h2 class="gold">🙏 Thank You for Visiting!</h2>
   <p style="color:#FFD700; font-size:18px;">We appreciate your visit and hope to see you again soon.</p>
