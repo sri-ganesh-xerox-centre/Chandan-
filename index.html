@@ -29,16 +29,36 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 @keyframes pulseOffer{0%,100%{transform:scale(1);box-shadow:0 0 40px #FFD700;}50%{transform:scale(1.05);box-shadow:0 0 70px #FFD700;}}
 @keyframes buttonGlow{0%,100%{box-shadow:0 0 15px #FFD700;}50%{box-shadow:0 0 35px #FFD700;}}
 
-/* Thank You Modal */
-#thankYouModal{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-background:#000;color:#FFD700;padding:30px 40px;border-radius:20px;
-box-shadow:0 0 50px #FFD700;text-align:center;z-index:1000;}
+/* Thank You Section Animation */
+.fade-in{opacity:0;transform:translateY(50px);transition:all 1s ease-out;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* Sticky WhatsApp Button */
+#whatsappButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index: 1000;
+}
+#whatsappButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
 </style>
 </head>
 <body>
 
 <header>
-<img src="logo.jpg">
+<img src="logo.jpg" alt="Sri Ganesh Xerox Centre Logo">
 <h1 class="gold">Sri Ganesh Xerox Centre</h1>
 <p>Fast • Affordable • Trusted Service in Paralakhemundi</p>
 </header>
@@ -54,23 +74,14 @@ box-shadow:0 0 50px #FFD700;text-align:center;z-index:1000;}
 <section class="section">
 <h2 class="gold">Our Services & Prices</h2>
 <div class="container">
-
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Xerox%20service." target="_blank">📄 Xerox<br><br><strong>₹2 per page</strong></a>
-
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Black%20and%20White%20printing." target="_blank">🖨 Black & White Printing<br><br><strong>₹5 per page</strong></a>
-
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Colour%20printing." target="_blank">🎨 Colour Printing<br><br><strong>₹10 per page</strong></a>
-
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Lamination%20service." target="_blank">📑 Lamination<br><br><strong>₹30 per page</strong></a>
-
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Online%20Form%20Fillup%20service." target="_blank">🖥 Online Form Fillup<br><br><strong>₹150 per form</strong></a>
-
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20DTP%20service%20(English%20or%20Odia)." target="_blank">🖥 DTP (English ₹50 | Odia ₹80)<br><br><small>Price varies by content</small></a>
-
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank">📸 Passport Photo<br><br><strong>₹50</strong></a>
-
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank">📂 Spiral Binding<br><br><strong>Starting ₹150</strong></a>
-
 </div>
 </section>
 
@@ -98,14 +109,15 @@ function calculate(){
   document.getElementById("result").innerHTML="Total Price: ₹"+total;
 }
 
-// Show Thank You popup after 5 seconds and hide after 5 seconds
-setTimeout(function(){
-  var modal = document.getElementById("thankYouModal");
-  modal.style.display = "block";
-  setTimeout(function(){
-    modal.style.display = "none";
-  }, 5000); // hide after 5 seconds
-}, 5000);
+// Fade-in animation for Thank You section on scroll
+window.addEventListener('scroll', function(){
+  var thankSection = document.getElementById('thankYouSection');
+  var position = thankSection.getBoundingClientRect().top;
+  var windowHeight = window.innerHeight;
+  if(position < windowHeight - 100){
+    thankSection.classList.add('visible');
+  }
+});
 </script>
 
 <!-- WHY CHOOSE US -->
@@ -136,11 +148,18 @@ setTimeout(function(){
 <a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
 </section>
 
-<!-- Thank You Modal -->
-<div id="thankYouModal">
-  <h2>🙏 Thank You for Visiting!</h2>
-  <p>We hope to see you again soon.</p>
-</div>
+<!-- THANK YOU SECTION (at bottom) -->
+<section id="thankYouSection" class="section fade-in" style="background:#000; padding:50px 20px;">
+  <h2 class="gold">🙏 Thank You for Visiting!</h2>
+  <p style="color:#FFD700; font-size:18px;">We appreciate your visit and hope to see you again soon.</p>
+  <a href="https://wa.me/918917699445" style="display:inline-block;padding:12px 25px;
+     background:#FFD700;color:#000;font-weight:bold;border-radius:25px;text-decoration:none;margin-top:15px;">
+     Contact Us on WhatsApp
+  </a>
+</section>
+
+<!-- STICKY WHATSAPP BUTTON -->
+<a href="https://wa.me/918917699445" target="_blank" id="whatsappButton">💬 WhatsApp</a>
 
 <footer>
 © 2026 Sri Ganesh Xerox Centre | All Rights Reserved
