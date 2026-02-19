@@ -3,27 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Ganesh Xerox Centre</title>
+<title>Best Xerox Centre in Paralakhemundi | Sri Ganesh Xerox Centre</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins', sans-serif;
-scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-background: linear-gradient(135deg,#000000,#1c1c1c,#000000);
+background:linear-gradient(135deg,#000,#1a1a1a,#000);
 color:white;
 }
 
-/* GOLD TEXT EFFECT */
-.gold-text{
-background: linear-gradient(45deg,#FFD700,#ffb347,#FFD700);
+/* GOLD TEXT */
+.gold{
+background:linear-gradient(45deg,#FFD700,#ffb347,#FFD700);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
@@ -32,23 +26,16 @@ background: linear-gradient(45deg,#FFD700,#ffb347,#FFD700);
 header{
 text-align:center;
 padding:50px 20px;
-background: linear-gradient(135deg,#111,#000);
 }
 
 header img{
 width:95%;
 max-width:1000px;
 border-radius:20px;
-box-shadow:0 0 40px rgba(255,215,0,0.6);
-animation:glow 2s infinite alternate;
+box-shadow:0 0 40px rgba(255,215,0,0.7);
 }
 
-@keyframes glow{
-from{box-shadow:0 0 20px rgba(255,215,0,0.5);}
-to{box-shadow:0 0 60px rgba(255,215,0,0.9);}
-}
-
-/* SERVICES */
+/* SECTION */
 .section{
 padding:70px 20px;
 text-align:center;
@@ -57,10 +44,11 @@ background:#111;
 
 .section h2{
 margin-bottom:40px;
-font-size:32px;
+font-size:30px;
 }
 
-.services{
+/* CARDS */
+.container{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
@@ -68,7 +56,7 @@ gap:25px;
 }
 
 .card{
-background: linear-gradient(135deg,#222,#111);
+background:linear-gradient(135deg,#222,#111);
 border:1px solid #FFD700;
 width:260px;
 padding:25px;
@@ -79,7 +67,7 @@ transition:0.4s;
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 0 40px rgba(255,215,0,0.8);
+box-shadow:0 0 40px rgba(255,215,0,0.9);
 }
 
 /* CONTACT */
@@ -91,40 +79,20 @@ background:#000;
 
 .contact a{
 display:inline-block;
-margin:15px;
-padding:15px 30px;
-background: linear-gradient(45deg,#FFD700,#ffb347);
+margin:10px;
+padding:12px 25px;
+background:linear-gradient(45deg,#FFD700,#ffb347);
 color:black;
-border-radius:40px;
+border-radius:30px;
 text-decoration:none;
-font-weight:700;
-transition:0.3s;
+font-weight:600;
 }
 
-.contact a:hover{
-transform:scale(1.1);
-}
-
-/* FOOTER */
 footer{
 text-align:center;
 padding:20px;
 background:#111;
 color:#aaa;
-}
-
-/* FLOATING WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background: linear-gradient(45deg,#FFD700,#ffb347);
-color:black;
-padding:15px 18px;
-border-radius:50%;
-font-size:22px;
-text-decoration:none;
-box-shadow:0 0 20px rgba(255,215,0,0.8);
 }
 </style>
 </head>
@@ -133,72 +101,66 @@ box-shadow:0 0 20px rgba(255,215,0,0.8);
 
 <header>
 <img src="logo.jpg">
-<h1 class="gold-text">Sri Ganesh Xerox Centre</h1>
+<h1 class="gold">Sri Ganesh Xerox Centre</h1>
+<p>Fast • Affordable • Trusted Service in Paralakhemundi</p>
 </header>
 
+<!-- SERVICES WITH PRICE -->
 <section class="section">
-<h2 class="gold-text">Our Premium Services & Prices</h2>
-<div class="services">
+<h2 class="gold">Our Services & Prices</h2>
+<div class="container">
 
-<div class="card">
-📄 Xerox  
-<br><br>
-<strong>₹2 per page</strong>
-</div>
+<div class="card">📄 Xerox<br><br><strong>₹2 per page</strong></div>
 
-<div class="card">
-🖨 Black & White Printing  
-<br><br>
-<strong>₹5 per page</strong>
-</div>
+<div class="card">🖨 Black & White Printing<br><br><strong>₹5 per page</strong></div>
 
-<div class="card">
-🎨 Colour Printing  
-<br><br>
-<strong>₹10 per page</strong>
-</div>
+<div class="card">🎨 Colour Printing<br><br><strong>₹10 per page</strong></div>
 
-<div class="card">
-📑 Lamination  
-<br><br>
-<strong>₹30 per page</strong>
-</div>
+<div class="card">📑 Lamination<br><br><strong>₹30 per page</strong></div>
 
-<div class="card">
-🖥 Online Form Fillup  
-<br><br>
-<strong>₹150 per form</strong>
-</div>
+<div class="card">🖥 Online Form Fillup<br><br><strong>₹150 per form</strong></div>
 
-<div class="card">
-📸 Passport Photo Print  
-<br><br>
-<strong>₹50</strong>
-</div>
+<div class="card">📸 Passport Photo Print<br><br><strong>₹50</strong></div>
 
-<div class="card">
-📂 Spiral Binding  
-<br><br>
-<strong>Starting ₹150</strong>
-<br>
-<small>(Price depends on number of pages)</small>
-</div>
+<div class="card">📂 Spiral Binding<br><br><strong>Starting ₹150</strong><br><small>(Depends on pages)</small></div>
 
 </div>
 </section>
 
+<!-- WHY CHOOSE US -->
+<section class="section">
+<h2 class="gold">Why Choose Us?</h2>
+<div class="container">
+
+<div class="card">⚡ Fast Service Guarantee</div>
+<div class="card">💰 Affordable Pricing</div>
+<div class="card">🎓 Student Friendly</div>
+<div class="card">📍 In Front of New Court, Paralakhemundi</div>
+<div class="card">😊 Friendly & Helpful Service</div>
+<div class="card">✔ 1000+ Happy Customers</div>
+
+</div>
+</section>
+
+<!-- TRUST SECTION -->
+<section class="section">
+<h2 class="gold">Trusted Local Service</h2>
+<p>We are committed to providing fast, clear and affordable printing services for students, professionals and local residents.</p>
+</section>
+
+<!-- CONTACT -->
 <section class="contact">
-<h2 class="gold-text">Contact Us</h2>
+<h2 class="gold">Contact Us</h2>
+<p>📍 In Front of New Court, Paralakhemundi</p>
 <p>📞 +91 8917699445</p>
+
 <a href="https://wa.me/918917699445">Chat on WhatsApp</a>
-<a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Shop Location</a>
+<a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
 </section>
 
 <footer>
 © 2026 Sri Ganesh Xerox Centre | All Rights Reserved
 </footer>
-
-<a class="whatsapp" href="https://wa.me/918917699445">💬</a>
 
 </body>
 </html>
