@@ -14,7 +14,7 @@ header img{width:95%;max-width:1000px;border-radius:20px;box-shadow:0 0 40px rgb
 .section{padding:70px 20px;text-align:center;background:#111;}
 .section h2{margin-bottom:40px;font-size:30px;}
 .container{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;}
-.card{background:linear-gradient(135deg,#222,#111);border:1px solid #FFD700;width:260px;padding:25px;border-radius:20px;box-shadow:0 0 20px rgba(255,215,0,0.3);transition:0.4s;text-decoration:none;color:white;display:block;}
+.card{background:linear-gradient(135deg,#222,#111);border:1px solid #FFD700;width:260px;padding:25px;border-radius:20px;box-shadow:0 0 20px rgba(255,215,0,0.3);transition:0.4s;text-decoration:none;color:white;display:block;cursor:pointer;}
 .card:hover{transform:translateY(-10px);box-shadow:0 0 40px rgba(255,215,0,0.9);}
 .contact{padding:70px 20px;text-align:center;background:#000;}
 .contact a{display:inline-block;margin:10px;padding:12px 25px;background:linear-gradient(45deg,#FFD700,#ffb347);color:black;border-radius:30px;text-decoration:none;font-weight:600;}
@@ -54,13 +54,8 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
   box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
 
-/* Premium Online Form Fillup Options */
-.formOptions{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-top:15px;
-}
+/* Collapsible Online Form Folder */
+#folderOptions{display:none;flex-direction:column;margin-top:15px;}
 .option{
   padding:10px;
   border-radius:15px;
@@ -70,6 +65,7 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
   transition:0.3s;
   box-shadow:0 0 10px rgba(255,215,0,0.2);
   font-weight:500;
+  margin-top:5px;
 }
 .option:hover{
   background:linear-gradient(135deg,#FFD700,#ffb347);
@@ -104,21 +100,21 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Colour%20printing." target="_blank">🎨 Colour Printing<br><br><strong>₹10 per page</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Lamination%20service." target="_blank">📑 Lamination<br><br><strong>₹30 per page</strong></a>
 
-<!-- PREMIUM ONLINE FORM FILLUP -->
-<div class="card" id="onlineFormCard">
+<!-- COLLAPSIBLE ONLINE FORM FILLUP -->
+<div class="card" id="onlineFormCard" onclick="toggleFolder()">
   🖥 Online Form Fillup<br><br>
   <strong>₹150 per form</strong>
-  <div class="formOptions">
-    <div class="option" onclick="sendForm('Cast Certificate')">📜 Cast Certificate</div>
-    <div class="option" onclick="sendForm('Residence Certificate')">🏠 Residence Certificate</div>
-    <div class="option" onclick="sendForm('Income Certificate')">💰 Income Certificate</div>
-    <div class="option" onclick="sendForm('Legal Heir')">🧾 Legal Heir</div>
-    <div class="option" onclick="sendForm('Pan Card')">🆔 Pan Card</div>
-    <div class="option" onclick="sendForm('Labour Card')">⚒ Labour Card</div>
-    <div class="option" onclick="sendForm('Police Verification')">👮 Police Verification</div>
-    <div class="option" onclick="sendForm('DL')">🚗 Driving License</div>
-    <div class="option" onclick="sendForm('New Current Connection')">🔌 New Current Connection</div>
-    <div class="option" onclick="sendForm('Other')">✏️ Other</div>
+  <div id="folderOptions">
+    <div class="option" onclick="sendForm('Cast Certificate', event)">📜 Cast Certificate</div>
+    <div class="option" onclick="sendForm('Residence Certificate', event)">🏠 Residence Certificate</div>
+    <div class="option" onclick="sendForm('Income Certificate', event)">💰 Income Certificate</div>
+    <div class="option" onclick="sendForm('Legal Heir', event)">🧾 Legal Heir</div>
+    <div class="option" onclick="sendForm('Pan Card', event)">🆔 Pan Card</div>
+    <div class="option" onclick="sendForm('Labour Card', event)">⚒ Labour Card</div>
+    <div class="option" onclick="sendForm('Police Verification', event)">👮 Police Verification</div>
+    <div class="option" onclick="sendForm('DL', event)">🚗 Driving License</div>
+    <div class="option" onclick="sendForm('New Current Connection', event)">🔌 New Current Connection</div>
+    <div class="option" onclick="sendForm('Other', event)">✏️ Other</div>
   </div>
 </div>
 
@@ -163,8 +159,19 @@ window.addEventListener('scroll', function(){
   }
 });
 
-// WhatsApp redirect for Online Form Fillup
-function sendForm(service){
+// COLLAPSIBLE FOLDER
+function toggleFolder(){
+  var folder = document.getElementById("folderOptions");
+  if(folder.style.display === "none" || folder.style.display === ""){
+    folder.style.display = "flex";
+  } else {
+    folder.style.display = "none";
+  }
+}
+
+// WhatsApp redirect
+function sendForm(service, event){
+  event.stopPropagation(); // Prevent folder toggle
   var message = encodeURIComponent("Hello, I want to apply for: " + service + " from Sri Ganesh Xerox Centre.");
   var whatsappURL = "https://wa.me/918917699445?text=" + message;
   window.open(whatsappURL, "_blank");
