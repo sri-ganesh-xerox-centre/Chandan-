@@ -103,11 +103,38 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;border-top:2px 
 </section>
 
 <!-- SPECIAL OFFER -->
-<section class="pulseOffer">
-<h2 class="gold">🔥 Special Offer!</h2>
-<p style="font-size:18px;font-weight:bold;">Get <strong>10% OFF</strong> on all orders above <strong>₹500</strong>!</p>
-<a href="https://wa.me/918917699445?text=Hello%20I%20want%20to%20avail%20the%2010%25%20off%20offer%20for%20orders%20above%20500." class="send-btn">Claim Offer on WhatsApp</a>
+<section class="pulseOffer" style="background:linear-gradient(135deg,#FFD700,#ffb347);border-radius:20px;margin:25px 5px;padding:25px;text-align:center;box-shadow:0 0 50px rgba(255,215,0,0.7);">
+  <h2 style="color:black;font-size:28px;font-weight:700;margin-bottom:15px;">🔥 Special Offer!</h2>
+  <p style="color:black;font-size:18px;font-weight:bold;margin-bottom:20px;">
+    Get <strong>10% OFF</strong> on all orders above <strong>₹500</strong>!
+  </p>
+  <a href="https://wa.me/918917699445?text=Hello%20I%20want%20to%20avail%20the%2010%25%20off%20offer%20for%20orders%20above%20500."
+     style="display:inline-block;padding:12px 25px;background:#000;color:#FFD700;font-weight:700;border-radius:25px;text-decoration:none;box-shadow:0 0 25px #FFD700;transition:0.4s;animation:buttonGlow 2s infinite;">
+     Claim Offer on WhatsApp
+  </a>
 </section>
+
+<style>
+/* Pulse animation for special offer section */
+@keyframes pulseOffer{
+  0%,100%{transform:scale(1);box-shadow:0 0 40px #FFD700;}
+  50%{transform:scale(1.05);box-shadow:0 0 70px #FFD700;}
+}
+
+/* Glow animation for button */
+@keyframes buttonGlow{
+  0%,100%{box-shadow:0 0 15px #FFD700;}
+  50%{box-shadow:0 0 35px #FFD700;}
+}
+
+/* Apply animations */
+.pulseOffer{
+  animation:pulseOffer 2s infinite;
+}
+.pulseOffer a{
+  animation:buttonGlow 2s infinite;
+}
+</style>
 
 <!-- SERVICES -->
 <section class="section">
