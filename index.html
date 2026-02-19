@@ -4,162 +4,112 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Best Xerox Centre in Paralakhemundi | Sri Ganesh Xerox Centre</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-background:linear-gradient(135deg,#000,#1a1a1a,#000);
-color:white;
-}
-
-/* GOLD TEXT */
-.gold{
-background:linear-gradient(45deg,#FFD700,#ffb347,#FFD700);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+body{background:linear-gradient(135deg,#000,#1a1a1a,#000);color:white;transition:0.5s;scroll-behavior:smooth;}
+.gold{background:linear-gradient(45deg,#FFD700,#ffb347,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;transition:0.5s;}
 
 /* HEADER */
-header{
-text-align:center;
-padding:50px 20px;
-}
+header{text-align:center;padding:40px 20px;position:relative;animation:fadeIn 1s ease-in;}
+header img{width:90%;max-width:500px;border-radius:20px;box-shadow:0 0 40px rgba(255,215,0,0.7);transition:0.5s;}
+header img:hover{transform:scale(1.05);}
 
-header img{
-width:95%;
-max-width:1000px;
-border-radius:20px;
-box-shadow:0 0 40px rgba(255,215,0,0.7);
-}
+/* FLOATING ICONS */
+.floating-icons span{position:absolute;font-size:25px;animation:floatIcon 6s ease-in-out infinite;}
+.floating-icons span:nth-child(1){top:10px;left:5%;animation-delay:0s;}
+.floating-icons span:nth-child(2){top:40px;right:10%;animation-delay:1s;}
+.floating-icons span:nth-child(3){top:5px;left:35%;animation-delay:2s;}
+.floating-icons span:nth-child(4){top:45px;right:35%;animation-delay:3s;}
+.floating-icons span:nth-child(5){top:20px;left:60%;animation-delay:4s;}
 
-/* SECTION */
-.section{
-padding:70px 20px;
-text-align:center;
-background:#111;
-}
-
-.section h2{
-margin-bottom:40px;
-font-size:30px;
-}
+/* SECTIONS */
+.section{padding:50px 15px;text-align:center;background:linear-gradient(135deg,#111,#222);transition:background 5s ease infinite;border-radius:20px;margin:25px 5px;box-shadow:0 0 40px rgba(255,215,0,0.2);}
+.section h2{margin-bottom:25px;}
+.container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
 
 /* CARDS */
-.container{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:25px;
-}
-
-.card{
-background:linear-gradient(135deg,#222,#111);
-border:1px solid #FFD700;
-width:260px;
-padding:25px;
-border-radius:20px;
-box-shadow:0 0 20px rgba(255,215,0,0.3);
-transition:0.4s;
-text-decoration:none;
-color:white;
-display:block;
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 40px rgba(255,215,0,0.9);
-}
+.card{background:linear-gradient(135deg,#222,#111);border:2px solid #FFD700;width:220px;padding:20px;border-radius:20px;box-shadow:0 0 20px rgba(255,215,0,0.3);transition:0.5s;text-decoration:none;color:white;display:block;position:relative;animation:float 4s ease-in-out infinite;}
+.card:hover{transform:translateY(-10px) scale(1.05);box-shadow:0 0 50px rgba(255,215,0,0.9);}
+.card span{display:inline-block;margin-right:8px;animation:floatIcon 4s infinite;}
 
 /* CONTACT */
-.contact{
-padding:70px 20px;
-text-align:center;
-background:#000;
-}
+.contact{padding:50px 20px;text-align:center;background:#000;border-radius:20px;box-shadow:0 0 40px rgba(255,215,0,0.2);}
+.contact a,.send-btn{display:inline-block;margin:10px;padding:10px 20px;background:linear-gradient(45deg,#FFD700,#ffb347);color:black;border-radius:25px;text-decoration:none;font-weight:600;transition:0.4s;animation:buttonGlow 2s infinite;}
+.contact a:hover,.send-btn:hover{box-shadow:0 0 30px #FFD700;transform:scale(1.05);}
+button{cursor:pointer;background:gold;color:black;font-weight:600;transition:0.4s;box-shadow:0 0 20px rgba(255,215,0,0.5);animation:buttonGlow 2s infinite;}
+button:hover{transform:scale(1.1);box-shadow:0 0 40px #FFD700;}
 
-.contact a{
-display:inline-block;
-margin:10px;
-padding:12px 25px;
-background:linear-gradient(45deg,#FFD700,#ffb347);
-color:black;
-border-radius:30px;
-text-decoration:none;
-font-weight:600;
-}
+/* INPUT */
+input, select{padding:10px;margin:5px;border-radius:10px;border:none;width:90%;max-width:250px;}
 
-footer{
-text-align:center;
-padding:20px;
-background:#111;
-color:#aaa;
-}
+/* FOOTER */
+footer{text-align:center;padding:20px;background:#111;color:#aaa;border-top:2px solid #FFD700;}
 
-input, select, button{
-padding:10px;
-margin:5px;
-border-radius:10px;
-border:none;
+/* STICKY WHATSAPP BUTTON */
+.sticky-whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px 20px;border-radius:50px;box-shadow:0 0 20px #25D366;font-size:18px;text-decoration:none;animation:buttonGlow 2s infinite;z-index:1000;}
+.sticky-whatsapp:hover{transform:scale(1.1);box-shadow:0 0 40px #25D366;}
+
+/* ANIMATIONS */
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+@keyframes floatIcon{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@keyframes buttonGlow{0%,100%{box-shadow:0 0 15px #FFD700;}50%{box-shadow:0 0 30px #FFD700;}}
+@keyframes pulseOffer{0%,100%{transform:scale(1);box-shadow:0 0 40px #FFD700;}50%{transform:scale(1.05);box-shadow:0 0 70px #FFD700;}}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  .container{flex-direction:column;align-items:center;}
+  header img{width:80%;}
+  .card{width:90%;max-width:300px;}
 }
-button{cursor:pointer;}
 </style>
 </head>
-
 <body>
 
 <header>
 <img src="logo.jpg" alt="Sri Ganesh Xerox Centre Logo">
 <h1 class="gold">Sri Ganesh Xerox Centre</h1>
 <p>Fast • Affordable • Trusted Service in Paralakhemundi</p>
+
+<!-- FLOATING ICONS -->
+<div class="floating-icons">
+  <span>📄</span>
+  <span>🖨</span>
+  <span>🎨</span>
+  <span>📑</span>
+  <span>🖥</span>
+</div>
 </header>
 
-<!-- SERVICES WITH PRICE -->
+<!-- SPECIAL OFFER -->
+<section class="section" style="background:linear-gradient(135deg,#FFD700,#ffb347);color:black;box-shadow:0 0 50px rgba(255,215,0,0.7);animation:pulseOffer 2s infinite;">
+<h2 class="gold">🔥 Special Offer!</h2>
+<p style="font-size:18px;font-weight:bold;">Get <strong>10% OFF</strong> on all orders above <strong>₹500</strong>!</p>
+<a href="https://wa.me/918917699445?text=Hello%20I%20want%20to%20avail%20the%2010%25%20off%20offer%20for%20orders%20above%20500." class="send-btn">
+Claim Offer on WhatsApp
+</a>
+</section>
+
+<!-- SERVICES -->
 <section class="section">
 <h2 class="gold">Our Services & Prices</h2>
 <div class="container">
-
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Xerox%20service." target="_blank">
-📄 Xerox<br><br><strong>₹2 per page</strong>
-</a>
-
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Black%20and%20White%20printing." target="_blank">
-🖨 Black & White Printing<br><br><strong>₹5 per page</strong>
-</a>
-
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Colour%20printing." target="_blank">
-🎨 Colour Printing<br><br><strong>₹10 per page</strong>
-</a>
-
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Lamination%20service." target="_blank">
-📑 Lamination<br><br><strong>₹30 per page</strong>
-</a>
-
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Online%20Form%20Fillup%20service." target="_blank">
-🖥 Online Form Fillup<br><br><strong>₹150 per form</strong>
-</a>
-
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20DTP%20service%20(English%20or%20Odia)." target="_blank">
-🖥 DTP (English ₹50 | Odia ₹80)<br><br><small>Price varies by content</small>
-</a>
-
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank">
-📸 Passport Photo<br><br><strong>₹50</strong>
-</a>
-
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank">
-📂 Spiral Binding<br><br><strong>Starting ₹150</strong>
-</a>
-
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Xerox%20service." target="_blank"><span>📄</span>Xerox<br><strong>₹2 per page</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Black%20and%20White%20printing." target="_blank"><span>🖨</span>Black & White Printing<br><strong>₹5 per page</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Colour%20printing." target="_blank"><span>🎨</span>Colour Printing<br><strong>₹10 per page</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Lamination%20service." target="_blank"><span>📑</span>Lamination<br><strong>₹30 per page</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Online%20Form%20Fillup%20service." target="_blank"><span>🖥</span>Online Form Fillup<br><strong>₹150 per form</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20DTP%20service%20(English%20or%20Odia)." target="_blank"><span>🖥</span>DTP (English ₹50 | Odia ₹80)<br><small>Price varies by content</small></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank"><span>📸</span>Passport Photo<br><strong>₹50</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank"><span>📂</span>Spiral Binding<br><strong>Starting ₹150</strong></a>
 </div>
 </section>
 
 <!-- PRICE CALCULATOR -->
 <section class="section">
 <h2 class="gold">Price Calculator</h2>
-
 <input type="number" id="pages" placeholder="Enter number of pages">
 <select id="service">
 <option value="2">Xerox (₹2)</option>
@@ -175,41 +125,17 @@ button{cursor:pointer;}
 
 <script>
 function calculate(){
-var pages=document.getElementById("pages").value;
-var rate=document.getElementById("service").value;
-var total=pages*rate;
-document.getElementById("result").innerHTML="Total Price: ₹"+total;
+  var pages=document.getElementById("pages").value;
+  var rate=document.getElementById("service").value;
+  var total=pages*rate;
+  document.getElementById("result").innerHTML="Total Price: ₹"+total;
 }
 </script>
 
-<!-- WHY CHOOSE US -->
-<section class="section">
-<h2 class="gold">Why Choose Us?</h2>
-<div class="container">
-
-<div class="card">⚡ Fast Service Guarantee</div>
-<div class="card">💰 Affordable Pricing</div>
-<div class="card">🎓 Student Friendly</div>
-<div class="card">📍 In Front of New Court, Paralakhemundi</div>
-<div class="card">😊 Friendly & Helpful Service</div>
-<div class="card">✔ 1000+ Happy Customers</div>
-
-</div>
-</section>
-
-<!-- TRUST SECTION -->
-<section class="section">
-<h2 class="gold">Trusted Local Service</h2>
-<p>We are committed to providing fast, clear and affordable printing services for students, professionals and local residents.</p>
-</section>
-
-<!-- SEND DOCUMENT BUTTON -->
+<!-- SEND DOCUMENT -->
 <section class="section">
 <h2 class="gold">Send Document Now</h2>
-<a href="https://wa.me/918917699445?text=Hello%20I%20want%20to%20send%20documents%20for%20printing"
-style="display:inline-block;padding:15px 30px;background:gold;color:black;border-radius:30px;text-decoration:none;font-weight:600;">
-📎 Send on WhatsApp
-</a>
+<a href="https://wa.me/918917699445?text=Hello%20I%20want%20to%20send%20documents%20for%20printing" class="send-btn">📎 Send on WhatsApp</a>
 </section>
 
 <!-- CONTACT -->
@@ -217,35 +143,14 @@ style="display:inline-block;padding:15px 30px;background:gold;color:black;border
 <h2 class="gold">Contact Us</h2>
 <p>📍 In Front of New Court, Paralakhemundi</p>
 <p>📞 +91 8917699445</p>
-
 <a href="https://wa.me/918917699445">Chat on WhatsApp</a>
 <a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
-
-<br><br>
-<h3>Place Your Order</h3>
-<input type="text" id="name" placeholder="Your Name"><br>
-<input type="text" id="serviceName" placeholder="Service Required"><br>
-<input type="number" id="orderPages" placeholder="Number of Pages"><br>
-<button onclick="sendOrder()">Submit Order</button>
 </section>
 
-<script>
-function sendOrder(){
-  var name=document.getElementById("name").value;
-  var service=document.getElementById("serviceName").value;
-  var pages=document.getElementById("orderPages").value;
+<!-- STICKY WHATSAPP -->
+<a href="https://wa.me/918917699445" class="sticky-whatsapp">💬 WhatsApp</a>
 
-  var message="Hello, my name is "+name+
-  ". I want "+service+
-  " service for "+pages+" pages.";
-
-  window.open("https://wa.me/918917699445?text="+encodeURIComponent(message));
-}
-</script>
-
-<footer>
-© 2026 Sri Ganesh Xerox Centre | All Rights Reserved
-</footer>
+<footer>© 2026 Sri Ganesh Xerox Centre | All Rights Reserved</footer>
 
 </body>
 </html>
