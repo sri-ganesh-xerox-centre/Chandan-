@@ -63,7 +63,7 @@ padding:25px;
 border-radius:20px;
 box-shadow:0 0 20px rgba(255,215,0,0.3);
 transition:0.4s;
-  text-decoration:none;
+text-decoration:none;
 color:white;
 display:block;
 }
@@ -97,13 +97,21 @@ padding:20px;
 background:#111;
 color:#aaa;
 }
+
+input, select, button{
+padding:10px;
+margin:5px;
+border-radius:10px;
+border:none;
+}
+button{cursor:pointer;}
 </style>
 </head>
 
 <body>
 
 <header>
-<img src="logo.jpg">
+<img src="logo.jpg" alt="Sri Ganesh Xerox Centre Logo">
 <h1 class="gold">Sri Ganesh Xerox Centre</h1>
 <p>Fast • Affordable • Trusted Service in Paralakhemundi</p>
 </header>
@@ -128,6 +136,7 @@ color:#aaa;
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Lamination%20service." target="_blank">
 📑 Lamination<br><br><strong>₹30 per page</strong>
 </a>
+
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Online%20Form%20Fillup%20service." target="_blank">
 🖥 Online Form Fillup<br><br><strong>₹150 per form</strong>
 </a>
@@ -135,9 +144,10 @@ color:#aaa;
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20DTP%20service%20(English%20or%20Odia)." target="_blank">
 🖥 DTP (English ₹50 | Odia ₹80)<br><br><small>Price varies by content</small>
 </a>
-  <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank">
+
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank">
 📸 Passport Photo<br><br><strong>₹50</strong>
-  </a>
+</a>
 
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank">
 📂 Spiral Binding<br><br><strong>Starting ₹150</strong>
@@ -146,25 +156,20 @@ color:#aaa;
 </div>
 </section>
 
-  <!-- PRICE CALCULATOR -->
+<!-- PRICE CALCULATOR -->
 <section class="section">
 <h2 class="gold">Price Calculator</h2>
 
-<input type="number" id="pages" placeholder="Enter number of pages" style="padding:10px;margin:10px;">
-<select id="service" style="padding:10px;margin:10px;">
+<input type="number" id="pages" placeholder="Enter number of pages">
+<select id="service">
 <option value="2">Xerox (₹2)</option>
 <option value="5">B/W Print (₹5)</option>
 <option value="10">Colour Print (₹10)</option>
 <option value="50">English DTP (₹50)</option>
 <option value="80">Odia DTP (₹80)</option>
 </select>
-
 <br><br>
-
-<button onclick="calculate()" style="padding:10px 20px;background:gold;border:none;border-radius:20px;">
-Calculate Price
-</button>
-
+<button onclick="calculate()">Calculate Price</button>
 <h3 id="result"></h3>
 </section>
 
@@ -198,6 +203,15 @@ document.getElementById("result").innerHTML="Total Price: ₹"+total;
 <p>We are committed to providing fast, clear and affordable printing services for students, professionals and local residents.</p>
 </section>
 
+<!-- SEND DOCUMENT BUTTON -->
+<section class="section">
+<h2 class="gold">Send Document Now</h2>
+<a href="https://wa.me/918917699445?text=Hello%20I%20want%20to%20send%20documents%20for%20printing"
+style="display:inline-block;padding:15px 30px;background:gold;color:black;border-radius:30px;text-decoration:none;font-weight:600;">
+📎 Send on WhatsApp
+</a>
+</section>
+
 <!-- CONTACT -->
 <section class="contact">
 <h2 class="gold">Contact Us</h2>
@@ -206,7 +220,28 @@ document.getElementById("result").innerHTML="Total Price: ₹"+total;
 
 <a href="https://wa.me/918917699445">Chat on WhatsApp</a>
 <a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
+
+<br><br>
+<h3>Place Your Order</h3>
+<input type="text" id="name" placeholder="Your Name"><br>
+<input type="text" id="serviceName" placeholder="Service Required"><br>
+<input type="number" id="orderPages" placeholder="Number of Pages"><br>
+<button onclick="sendOrder()">Submit Order</button>
 </section>
+
+<script>
+function sendOrder(){
+  var name=document.getElementById("name").value;
+  var service=document.getElementById("serviceName").value;
+  var pages=document.getElementById("orderPages").value;
+
+  var message="Hello, my name is "+name+
+  ". I want "+service+
+  " service for "+pages+" pages.";
+
+  window.open("https://wa.me/918917699445?text="+encodeURIComponent(message));
+}
+</script>
 
 <footer>
 © 2026 Sri Ganesh Xerox Centre | All Rights Reserved
