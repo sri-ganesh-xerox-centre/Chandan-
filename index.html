@@ -30,8 +30,9 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 @keyframes buttonGlow{0%,100%{box-shadow:0 0 15px #FFD700;}50%{box-shadow:0 0 35px #FFD700;}}
 
 /* Thank You Modal */
-#thankYouModal{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#000;color:#FFD700;padding:30px 40px;border-radius:20px;box-shadow:0 0 50px #FFD700;text-align:center;z-index:1000;}
-#thankYouModal button{margin-top:15px;padding:10px 20px;background:#FFD700;color:#000;font-weight:bold;border:none;border-radius:15px;cursor:pointer;}
+#thankYouModal{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+background:#000;color:#FFD700;padding:30px 40px;border-radius:20px;
+box-shadow:0 0 50px #FFD700;text-align:center;z-index:1000;}
 </style>
 </head>
 <body>
@@ -97,15 +98,14 @@ function calculate(){
   document.getElementById("result").innerHTML="Total Price: ₹"+total;
 }
 
-// Thank You Modal
+// Show Thank You popup after 5 seconds and hide after 5 seconds
 setTimeout(function(){
   var modal = document.getElementById("thankYouModal");
   modal.style.display = "block";
+  setTimeout(function(){
+    modal.style.display = "none";
+  }, 5000); // hide after 5 seconds
 }, 5000);
-
-document.getElementById("closeModal").onclick = function(){
-  document.getElementById("thankYouModal").style.display = "none";
-};
 </script>
 
 <!-- WHY CHOOSE US -->
@@ -136,11 +136,10 @@ document.getElementById("closeModal").onclick = function(){
 <a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
 </section>
 
-<!-- Thank You Modal HTML -->
+<!-- Thank You Modal -->
 <div id="thankYouModal">
   <h2>🙏 Thank You for Visiting!</h2>
   <p>We hope to see you again soon.</p>
-  <button id="closeModal">Close</button>
 </div>
 
 <footer>
