@@ -1,213 +1,284 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Ganesh Xerox Centre - Paralakhemundi</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FFD700">
-
-<!-- AOS Library for Scroll Animations -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<title>Sri Ganesh Xerox Centre - Reviews</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-html{scroll-behavior:smooth;}
-body{background:linear-gradient(135deg,#000,#1a1a1a,#000);color:white;}
-.gold{background:linear-gradient(45deg,#FFD700,#ffb347,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-header{text-align:center;padding:50px 20px;}
-header img{width:95%;max-width:1000px;border-radius:20px;box-shadow:0 0 40px rgba(255,215,0,0.7);}
-header h1{margin-top:15px;}
-header p{margin-top:5px;color:#ddd;}
-.section{padding:70px 20px;text-align:center;background:#111;}
-.section h2{margin-bottom:40px;font-size:30px;}
-.container{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;}
-.card{
-  background:linear-gradient(135deg,#222,#111);
-  border:1px solid #FFD700;
-  width:260px;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 4px 15px rgba(255,215,0,0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-decoration:none;
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0f0f0f;
   color:white;
-  display:block;
-  cursor:pointer;
   text-align:center;
 }
-.card:hover{
-  transform:translateY(-10px) scale(1.03);
-  box-shadow:0 0 60px rgba(255,215,0,0.8);
+
+h2{
+  color:gold;
+  margin-top:40px;
 }
-.contact{padding:70px 20px;text-align:center;background:#000;}
-.contact a{display:inline-block;margin:10px;padding:12px 25px;background:linear-gradient(45deg,#FFD700,#ffb347);color:black;border-radius:30px;text-decoration:none;font-weight:600;transition:transform 0.3s;}
-.contact a:hover{transform:scale(1.1);}
-footer{text-align:center;padding:20px;background:#111;color:#aaa;}
-.pulseOffer{background:linear-gradient(135deg,#FFD700,#ffb347);border-radius:20px;margin:25px 5px;padding:25px;text-align:center;box-shadow:0 0 50px rgba(255,215,0,0.7);animation:pulseOffer 2s infinite;}
-.pulseOffer h2, .pulseOffer p{color:black;}
-.pulseOffer a{display:inline-block;padding:12px 25px;background:#000;color:#FFD700;font-weight:700;border-radius:25px;text-decoration:none;box-shadow:0 0 25px #FFD700;transition:0.4s;animation:buttonGlow 2s infinite;}
-@keyframes pulseOffer{0%,100%{transform:scale(1);box-shadow:0 0 40px #FFD700;}50%{transform:scale(1.05);box-shadow:0 0 70px #FFD700;}}
-@keyframes buttonGlow{0%,100%{box-shadow:0 0 15px #FFD700;}50%{box-shadow:0 0 35px #FFD700;}}
-.popupBg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:2000;opacity:0;transition:opacity 0.4s;}
-.popupBg.show{display:flex;opacity:1;}
-.popupContent{background:linear-gradient(135deg,#222,#111);padding:25px;border-radius:20px;text-align:center;width:90%;max-width:400px;position:relative;box-shadow:0 0 40px rgba(255,215,0,0.7);}
-.popupContent h2{margin-bottom:15px;color:#FFD700;}
-.popupContent .option{padding:10px;border-radius:15px;background:#111;border:1px solid #FFD700;margin-top:10px;cursor:pointer;transition:0.3s;}
-.popupContent .option:hover{background:#FFD700;color:black;}
-.closeBtn{position:absolute;top:10px;right:15px;font-size:24px;font-weight:bold;cursor:pointer;color:#FFD700;}
-.pulseJobGroup{position: relative;overflow: hidden;color: white;font-weight:bold;border-radius:20px;border:2px solid #FFD700;transition: transform 0.3s, box-shadow 0.3s;animation: bouncePulse 2s infinite;margin-top:20px;}
-.pulseJobGroup::before{content:'';position:absolute;top:-10%; left:-10%;width:120%; height:120%;background:radial-gradient(circle, rgba(255,223,0,0.4) 0%, rgba(255,223,0,0) 70%);z-index:0;border-radius:25px;animation: pulseYellowGlow 2s infinite;}
-.pulseJobGroup > *{position: relative; z-index:1;}
-@keyframes pulseYellowGlow{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.1);opacity:1;}}
-@keyframes bouncePulse{0%,100%{transform: translateY(0);}50%{transform: translateY(-8px);}}
-#thankYouSection{background: linear-gradient(135deg, #222, #444, #222); padding:50px 20px; text-align:center; border-radius:20px; animation: floatGlow 3s infinite alternate;}
-@keyframes floatGlow {0% { transform: translateY(0); box-shadow: 0 0 20px rgba(255,215,0,0.3); } 50% { transform: translateY(-10px); box-shadow: 0 0 50px rgba(255,215,0,0.7); } 100% { transform: translateY(0); box-shadow: 0 0 20px rgba(255,215,0,0.3); }}
-@media(max-width:600px){.container{flex-direction:column;gap:20px;}header img{width:100%;}}
-input, select, button{margin:5px; padding:10px; border-radius:15px; border:none; font-size:16px;}
-button{background:gold; cursor:pointer;}
+
+.section{
+  padding:40px 20px;
+}
+
+.feedback-box{
+  max-width:500px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.feedback-box input,
+.feedback-box textarea{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+}
+
+textarea{
+  height:100px;
+}
+
+button{
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.submit-btn{
+  background:gold;
+  color:black;
+}
+
+.google-btn{
+  background:#ffffff;
+  color:black;
+}
+
+.admin-btn{
+  background:red;
+  color:white;
+  margin-top:20px;
+}
+
+.star-rating{
+  font-size:30px;
+  cursor:pointer;
+  color:gray;
+}
+
+.star-rating span.active{
+  color:gold;
+}
+
+.avg-rating{
+  margin-bottom:20px;
+  font-size:18px;
+}
+
+.carousel{
+  max-width:600px;
+  margin:30px auto;
+  overflow:hidden;
+}
+
+.review-slider{
+  display:flex;
+  transition:0.5s;
+}
+
+.review-card{
+  min-width:100%;
+  background:#111;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 0 15px rgba(255,215,0,0.3);
+}
+
+.review-card h3{
+  color:gold;
+}
+
+.review-card button{
+  background:red;
+  color:white;
+  margin-top:10px;
+}
+
 </style>
 </head>
+
 <body>
 
-<header data-aos="fade-down">
-<img src="logo.jpg" alt="Sri Ganesh Xerox Centre Logo">
-<h1 class="gold">Sri Ganesh Xerox Centre</h1>
-<p>Fast • Affordable • Trusted Service in Paralakhemundi</p>
-</header>
+<div class="section">
 
-<!-- Special Offer -->
-<section class="pulseOffer" data-aos="zoom-in">
-<h2>🔥 Special Offer!</h2>
-<p>Get <strong>10% OFF</strong> on all orders above <strong>₹500</strong>!</p>
-<a href="https://wa.me/918917699445?text=Hello%20I%20want%20to%20avail%20the%2010%25%20off%20offer%20for%20orders%20above%20500.">Claim Offer on WhatsApp</a>
-</section>
+<h2>⭐ Customer Reviews</h2>
 
-<!-- Services Section -->
-<section class="section">
-<h2 class="gold" data-aos="fade-up">Our Services & Prices</h2>
-<div class="container">
-<a class="card" onclick="openOnlineForm()" data-aos="fade-up">🖥 Online Form Fillup<br><br><strong>₹150 per form</strong></a>
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Xerox%20service." target="_blank" data-aos="fade-up">📄 Xerox<br><br><strong>₹2 per page</strong></a>
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Black%20and%20White%20printing." target="_blank" data-aos="fade-up">🖨 Black & White Printing<br><br><strong>₹5 per page</strong></a>
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Colour%20printing." target="_blank" data-aos="fade-up">🎨 Colour Printing<br><br><strong>₹10 per page</strong></a>
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Lamination%20service." target="_blank" data-aos="fade-up">📑 Lamination<br><br><strong>₹30 per page</strong></a>
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20DTP%20service%20(English%20or%20Odia)." target="_blank" data-aos="fade-up">🖥 DTP (English ₹50 | Odia ₹80)<br><br><small>Price varies by content</small></a>
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank" data-aos="fade-up">📸 Passport Photo<br><br><strong>₹50</strong></a>
-<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank" data-aos="fade-up">📂 Spiral Binding<br><br><strong>Starting ₹150</strong></a>
-
-<!-- Job Updates -->
-<a class="card pulseJobGroup" onclick="openJobGroup()" data-aos="fade-up">💼 Job Updates Group<br><br>Join our WhatsApp group for latest job updates!</a>
-</div>
-</section>
-
-<!-- Multi-Service Price Calculator -->
-<section class="section">
-<h2 class="gold" data-aos="fade-up">Price Calculator</h2>
-<div data-aos="fade-up">
-<label>Xerox (₹2): </label><input type="number" id="xeroxQty" placeholder="0" min="0"><br>
-<label>B/W Print (₹5): </label><input type="number" id="bwQty" placeholder="0" min="0"><br>
-<label>Colour Print (₹10): </label><input type="number" id="colorQty" placeholder="0" min="0"><br>
-<label>DTP (English ₹50 / Odia ₹80): </label><input type="number" id="dtpQty" placeholder="0" min="0"><br>
-<label>Lamination (₹30): </label><input type="number" id="lamQty" placeholder="0" min="0"><br>
-<button onclick="calculateTotal()">Calculate Total</button>
-<h3 id="totalResult"></h3>
-</div>
-</section>
-
-<!-- Online Form Popup -->
-<div class="popupBg" id="onlineFormPopup">
-  <div class="popupContent">
-    <span class="closeBtn" onclick="closeOnlineForm()">&times;</span>
-    <h2>Online Form Fillup</h2>
-    <div class="option" onclick="toggleFormOption('Cast Certificate')">📜 Cast Certificate</div>
-    <div class="option" onclick="toggleFormOption('Residence Certificate')">🏠 Residence Certificate</div>
-    <div class="option" onclick="toggleFormOption('Income Certificate')">💰 Income Certificate</div>
-    <div class="option" onclick="toggleFormOption('Legal Heir')">🧾 Legal Heir</div>
-    <div class="option" onclick="toggleFormOption('Pan Card')">🆔 Pan Card</div>
-    <div class="option" onclick="toggleFormOption('Labour Card')">⚒ Labour Card</div>
-    <div class="option" onclick="toggleFormOption('Police Verification')">👮 Police Verification</div>
-    <div class="option" onclick="toggleFormOption('DL')">🚗 Driving License</div>
-    <div class="option" onclick="toggleFormOption('New Current Connection')">🔌 New Current Connection</div>
-    <div class="option" onclick="toggleFormOption('Other')">✏️ Other</div>
-  </div>
+<div class="avg-rating">
+Average Rating: <span id="avgRating">0</span> ⭐
 </div>
 
-<!-- Job Updates Popup -->
-<div class="popupBg" id="jobGroupPopup">
-  <div class="popupContent">
-    <span class="closeBtn" onclick="closeJobGroup()">&times;</span>
-    <h2>💼 Job Updates Group</h2>
-    <p>Join our WhatsApp group to get the latest job updates instantly!</p>
-    <a href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">Join Now</a>
-  </div>
+<div class="feedback-box">
+
+<input type="text" id="custName" placeholder="Your Name">
+<input type="number" id="custMobile" placeholder="Mobile Number">
+
+<div class="star-rating">
+  <span onclick="rate(1)">★</span>
+  <span onclick="rate(2)">★</span>
+  <span onclick="rate(3)">★</span>
+  <span onclick="rate(4)">★</span>
+  <span onclick="rate(5)">★</span>
 </div>
 
-<!-- Floating Thank You -->
-<section id="thankYouSection" data-aos="fade-up">
-<h2>🙏 Thank You for Visiting!</h2>
-<p>We appreciate your support. Come back soon!</p>
-</section>
+<textarea id="custMessage" placeholder="Write your feedback..."></textarea>
 
-<!-- Contact -->
-<section class="contact" data-aos="fade-up">
-<h2 class="gold">Contact Us</h2>
-<p>📍 In Front of New Court, Paralakhemundi</p>
-<p>📞 +91 8917699445</p>
-<a href="https://wa.me/918917699445">Chat on WhatsApp</a>
-<a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
-</section>
+<button class="submit-btn" onclick="submitFeedback()">Submit Review</button>
 
-<footer data-aos="fade-up">
-© 2026 Sri Ganesh Xerox Centre | All Rights Reserved
-</footer>
+<a href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK" target="_blank">
+<button class="google-btn">Rate Us on Google</button>
+</a>
+
+</div>
+
+<div class="carousel">
+  <div id="reviewSlider" class="review-slider"></div>
+</div>
+
+<button class="admin-btn" onclick="adminLogin()">Admin Panel</button>
+
+</div>
 
 <script>
-// Initialize AOS
-AOS.init({ duration: 1000 });
 
-// Multi-Service Price Calculator
-function calculateTotal(){
-  let total = 0;
-  total += (parseInt(document.getElementById("xeroxQty").value)||0) * 2;
-  total += (parseInt(document.getElementById("bwQty").value)||0) * 5;
-  total += (parseInt(document.getElementById("colorQty").value)||0) * 10;
-  total += (parseInt(document.getElementById("dtpQty").value)||0) * 50; // Default English
-  total += (parseInt(document.getElementById("lamQty").value)||0) * 30;
-  
-  // Apply 10% off if total > 500
-  let discount = 0;
-  if(total > 500) discount = total * 0.1;
-  document.getElementById("totalResult").innerHTML = "Total Price: ₹"+total+"<br>Discount: ₹"+discount+"<br>Final Price: ₹"+(total-discount);
+let selectedRating = 0;
+let currentSlide = 0;
+
+function rate(stars){
+  selectedRating = stars;
+  let starsEl = document.querySelectorAll(".star-rating span");
+  starsEl.forEach((star,index)=>{
+    star.classList.toggle("active", index < stars);
+  });
 }
 
-// Online Form Popup
-function openOnlineForm(){ document.getElementById("onlineFormPopup").classList.add("show"); }
-function closeOnlineForm(){ document.getElementById("onlineFormPopup").classList.remove("show"); }
-let currentOpen = null;
-function toggleFormOption(service){
-  if(currentOpen === service){
-    let msg = encodeURIComponent("Hello, I want to apply for: " + service + " from Sri Ganesh Xerox Centre.");
-    window.open("https://wa.me/918917699445?text=" + msg, "_blank");
-    closeOnlineForm();
-    currentOpen = null;
-  } else {
-    currentOpen = service;
-    alert("Selected: " + service + "\nClick again to confirm and send to WhatsApp.");
+function submitFeedback(){
+  let name = document.getElementById("custName").value;
+  let mobile = document.getElementById("custMobile").value;
+  let message = document.getElementById("custMessage").value;
+
+  if(name==="" || mobile==="" || message==="" || selectedRating===0){
+    alert("Please fill all fields");
+    return;
+  }
+
+  let review = {
+    id: Date.now(),
+    name,
+    rating:selectedRating,
+    message
+  };
+
+  let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  reviews.push(review);
+  localStorage.setItem("reviews", JSON.stringify(reviews));
+
+  sendToWhatsApp(name, selectedRating, message);
+
+  displayReviews();
+  calculateAverage();
+
+  document.getElementById("custName").value="";
+  document.getElementById("custMobile").value="";
+  document.getElementById("custMessage").value="";
+  rate(0);
+}
+
+function displayReviews(){
+  let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  let slider = document.getElementById("reviewSlider");
+  slider.innerHTML="";
+
+  reviews.forEach(r=>{
+    slider.innerHTML += `
+      <div class="review-card">
+        <h3>${r.name}</h3>
+        <p>${"★".repeat(r.rating)}</p>
+        <p>${r.message}</p>
+        <button onclick="deleteReview(${r.id})">Delete</button>
+      </div>
+    `;
+  });
+}
+
+function calculateAverage(){
+  let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  if(reviews.length===0){
+    document.getElementById("avgRating").innerText="0";
+    return;
+  }
+
+  let total = reviews.reduce((sum,r)=>sum+r.rating,0);
+  let avg = (total/reviews.length).toFixed(1);
+  document.getElementById("avgRating").innerText=avg;
+}
+
+function sendToWhatsApp(name,rating,message){
+  let text = encodeURIComponent(
+    "Customer Review\n\n"+
+    "Name: "+name+"\n"+
+    "Rating: "+rating+" Stars\n"+
+    "Message: "+message
+  );
+  window.open("https://wa.me/918917699445?text="+text,"_blank");
+}
+
+function adminLogin(){
+  let pass = prompt("Enter Admin Password");
+  if(pass==="admin123"){
+    alert("Admin Mode Activated");
+  }else{
+    alert("Wrong Password");
   }
 }
 
-// Job Group Popup
-function openJobGroup(){ document.getElementById("jobGroupPopup").classList.add("show"); }
-function closeJobGroup(){ document.getElementById("jobGroupPopup").classList.remove("show"); }
+function deleteReview(id){
+  let pass = prompt("Enter Admin Password to Delete");
+  if(pass!=="admin123"){
+    alert("Wrong Password");
+    return;
+  }
 
-// Service Worker for PWA
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('service-worker.js').then(()=>console.log('SW Registered')).catch(err=>console.log(err));
+  let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  reviews = reviews.filter(r=>r.id!==id);
+  localStorage.setItem("reviews", JSON.stringify(reviews));
+  displayReviews();
+  calculateAverage();
 }
+
+function autoSlide(){
+  let slider = document.getElementById("reviewSlider");
+  let total = slider.children.length;
+  if(total===0) return;
+
+  currentSlide++;
+  if(currentSlide>=total) currentSlide=0;
+
+  slider.style.transform = `translateX(-${currentSlide*100}%)`;
+}
+
+setInterval(autoSlide,3000);
+
+displayReviews();
+calculateAverage();
+
 </script>
 
 </body>
