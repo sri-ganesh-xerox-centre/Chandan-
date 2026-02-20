@@ -17,7 +17,6 @@
 html{scroll-behavior:smooth;}
 body{background:linear-gradient(135deg,#000,#1a1a1a,#000);color:white;}
 .gold{background:linear-gradient(45deg,#FFD700,#ffb347,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-
 header{text-align:center;padding:50px 20px;}
 header img{width:95%;max-width:1000px;border-radius:20px;box-shadow:0 0 40px rgba(255,215,0,0.7);}
 header h1{margin-top:15px;}
@@ -54,15 +53,23 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 .pulseOffer{background:linear-gradient(135deg,#FFD700,#ffb347);border-radius:20px;margin:25px;padding:25px;text-align:center;box-shadow:0 0 50px rgba(255,215,0,0.7);animation:pulseOffer 2s infinite;}
 .pulseOffer h2,.pulseOffer p{color:black;}
 .pulseOffer a{display:inline-block;padding:12px 25px;background:#000;color:#FFD700;font-weight:700;border-radius:25px;text-decoration:none;}
+
 @keyframes pulseOffer{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
 
+/* Popup */
 .popupBg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:2000;opacity:0;transition:0.4s;}
 .popupBg.show{display:flex;opacity:1;}
 .popupContent{background:linear-gradient(135deg,#222,#111);padding:25px;border-radius:20px;text-align:center;width:90%;max-width:400px;position:relative;box-shadow:0 0 40px rgba(255,215,0,0.7);}
 .popupContent h2{margin-bottom:15px;color:#FFD700;}
-.popupContent .option{padding:12px;border-radius:15px;background:#111;border:1px solid #FFD700;margin-top:10px;cursor:pointer;transition:0.3s;}
+.popupContent .option{padding:10px;border-radius:15px;background:#111;border:1px solid #FFD700;margin-top:10px;cursor:pointer;transition:0.3s;}
 .popupContent .option:hover{background:#FFD700;color:black;}
 .closeBtn{position:absolute;top:10px;right:15px;font-size:22px;cursor:pointer;color:#FFD700;}
+
+.pulseJobGroup{animation:bouncePulse 2s infinite;margin-top:20px;}
+@keyframes bouncePulse{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+#thankYouSection{background:linear-gradient(135deg,#222,#444,#222);padding:50px;text-align:center;border-radius:20px;margin:20px;animation:floatGlow 3s infinite alternate;}
+@keyframes floatGlow{0%{transform:translateY(0);}50%{transform:translateY(-10px);}100%{transform:translateY(0);}}
 
 input,select,button{margin:5px;padding:10px;border-radius:15px;border:none;font-size:16px;}
 button{background:gold;cursor:pointer;}
@@ -89,17 +96,18 @@ button{background:gold;cursor:pointer;}
 <h2 class="gold">Our Services</h2>
 <div class="container">
 
-<a class="card" onclick="openOnlineForm()">🖥 Online Form Fillup</a>
+<a class="card" onclick="openOnlineForm()">🖥 Online Form Fillup<br><br>₹150 per form</a>
 <a class="card" href="https://wa.me/918917699445">📄 Xerox ₹2</a>
 <a class="card" href="https://wa.me/918917699445">🖨 B/W Print ₹5</a>
 <a class="card" href="https://wa.me/918917699445">🎨 Colour Print ₹10</a>
 <a class="card" href="https://wa.me/918917699445">📑 Lamination ₹30</a>
 <a class="card" href="https://wa.me/918917699445">📸 Passport Photo ₹50</a>
-<a class="card" onclick="openJobGroup()">💼 Job Updates Group</a>
+<a class="card pulseJobGroup" onclick="openJobGroup()">💼 Job Updates Group</a>
 
 </div>
 </section>
 
+<!-- Price Calculator -->
 <section class="section">
 <h2 class="gold">Price Calculator</h2>
 
@@ -126,27 +134,37 @@ button{background:gold;cursor:pointer;}
 <h3 id="totalResult"></h3>
 </section>
 
-<!-- ONLINE FORM POPUP -->
+<!-- Online Form Popup -->
 <div class="popupBg" id="onlineFormPopup">
 <div class="popupContent">
 <span class="closeBtn" onclick="closeOnlineForm()">&times;</span>
-<h2>Online Form Services</h2>
+<h2>Online Form Fillup</h2>
 
-<div class="option" onclick="applyService('Cast Certificate')">Cast Certificate</div>
-<div class="option" onclick="applyService('Residence Certificate')">Residence Certificate</div>
-<div class="option" onclick="applyService('Income Certificate')">Income Certificate</div>
-<div class="option" onclick="applyService('Legal Heir Certificate')">Legal Heir Certificate</div>
-<div class="option" onclick="applyService('Pan Card')">Pan Card</div>
-<div class="option" onclick="applyService('Labour Card')">Labour Card</div>
-<div class="option" onclick="applyService('Police Verification')">Police Verification</div>
-<div class="option" onclick="applyService('Driving License')">Driving License</div>
-<div class="option" onclick="applyService('New Current Connection')">New Current Connection</div>
-<div class="option" onclick="applyService('Other Service')">Other Service</div>
+<div class="option" onclick="selectService('Cast Certificate')">Cast Certificate</div>
+<div class="option" onclick="selectService('Residence Certificate')">Residence Certificate</div>
+<div class="option" onclick="selectService('Income Certificate')">Income Certificate</div>
+<div class="option" onclick="selectService('Legal Heir')">Legal Heir</div>
+<div class="option" onclick="selectService('Pan Card')">Pan Card</div>
+<div class="option" onclick="selectService('Labour Card')">Labour Card</div>
+<div class="option" onclick="selectService('Police Verification')">Police Verification</div>
+<div class="option" onclick="selectService('Driving License')">Driving License</div>
+<div class="option" onclick="selectService('New Current Connection')">New Current Connection</div>
+<div class="option" onclick="selectService('Other')">Other</div>
 
 </div>
 </div>
 
-<!-- JOB GROUP POPUP -->
+<!-- Confirm Popup -->
+<div class="popupBg" id="confirmPopup">
+<div class="popupContent">
+<span class="closeBtn" onclick="closeConfirmPopup()">&times;</span>
+<h2 id="confirmTitle"></h2>
+<p id="confirmText"></p>
+<button onclick="sendToWhatsApp()">Confirm & Send</button>
+</div>
+</div>
+
+<!-- Job Group Popup -->
 <div class="popupBg" id="jobGroupPopup">
 <div class="popupContent">
 <span class="closeBtn" onclick="closeJobGroup()">&times;</span>
@@ -155,6 +173,11 @@ button{background:gold;cursor:pointer;}
 <a href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">Join Now</a>
 </div>
 </div>
+
+<section id="thankYouSection">
+<h2>🙏 Thank You for Visiting!</h2>
+<p>We appreciate your support. Visit again!</p>
+</section>
 
 <section class="contact">
 <h2 class="gold">Contact Us</h2>
@@ -187,9 +210,20 @@ totalResult.innerHTML="Total: ₹"+total+"<br>Discount: ₹"+discount+"<br><stro
 function openOnlineForm(){onlineFormPopup.classList.add("show");}
 function closeOnlineForm(){onlineFormPopup.classList.remove("show");}
 
-function applyService(service){
-let message=encodeURIComponent("Hello, I want to apply for "+service+" from Sri Ganesh Xerox Centre.");
-window.open("https://wa.me/918917699445?text="+message,"_blank");
+let selectedService="";
+function selectService(service){
+selectedService=service;
+confirmTitle.innerText="Confirm "+service;
+confirmText.innerText="Do you want to apply for "+service+"?";
+confirmPopup.classList.add("show");
+}
+
+function closeConfirmPopup(){confirmPopup.classList.remove("show");}
+
+function sendToWhatsApp(){
+let msg=encodeURIComponent("Hello, I want to apply for: "+selectedService+" from Sri Ganesh Xerox Centre.");
+window.open("https://wa.me/918917699445?text="+msg,"_blank");
+closeConfirmPopup();
 closeOnlineForm();
 }
 
