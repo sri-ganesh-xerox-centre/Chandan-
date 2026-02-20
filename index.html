@@ -14,25 +14,16 @@
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
 <style>
-/* Basic Reset & Fonts */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 html{scroll-behavior:smooth;}
 body{background:linear-gradient(135deg,#000,#1a1a1a,#000);color:white;}
-
-/* Gold Text */
 .gold{background:linear-gradient(45deg,#FFD700,#ffb347,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-
-/* Header */
 header{text-align:center;padding:50px 20px;}
 header img{width:95%;max-width:1000px;border-radius:20px;box-shadow:0 0 40px rgba(255,215,0,0.7);}
 header h1{margin-top:15px;}
 header p{margin-top:5px;color:#ddd;}
-
-/* Sections */
 .section{padding:70px 20px;text-align:center;background:#111;}
 .section h2{margin-bottom:40px;font-size:30px;}
-
-/* Container & Cards */
 .container{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;}
 .card{
   background:linear-gradient(135deg,#222,#111);
@@ -52,33 +43,15 @@ header p{margin-top:5px;color:#ddd;}
   transform:translateY(-10px) scale(1.03);
   box-shadow:0 0 60px rgba(255,215,0,0.8);
 }
-
-/* Contact Section */
 .contact{padding:70px 20px;text-align:center;background:#000;}
 .contact a{display:inline-block;margin:10px;padding:12px 25px;background:linear-gradient(45deg,#FFD700,#ffb347);color:black;border-radius:30px;text-decoration:none;font-weight:600;transition:transform 0.3s;}
 .contact a:hover{transform:scale(1.1);}
-
-/* Footer */
 footer{text-align:center;padding:20px;background:#111;color:#aaa;}
-
-/* Special Offer Pulsing */
-.pulseOffer{
-  background:linear-gradient(135deg,#FFD700,#ffb347);
-  border-radius:20px;
-  margin:25px 5px;
-  padding:25px;
-  text-align:center;
-  box-shadow:0 0 50px rgba(255,215,0,0.7);
-  animation:pulseOffer 2s infinite;
-}
+.pulseOffer{background:linear-gradient(135deg,#FFD700,#ffb347);border-radius:20px;margin:25px 5px;padding:25px;text-align:center;box-shadow:0 0 50px rgba(255,215,0,0.7);animation:pulseOffer 2s infinite;}
 .pulseOffer h2, .pulseOffer p{color:black;}
-.pulseOffer a{
-  display:inline-block;padding:12px 25px;background:#000;color:#FFD700;font-weight:700;border-radius:25px;text-decoration:none;box-shadow:0 0 25px #FFD700;transition:0.4s;animation:buttonGlow 2s infinite;
-}
+.pulseOffer a{display:inline-block;padding:12px 25px;background:#000;color:#FFD700;font-weight:700;border-radius:25px;text-decoration:none;box-shadow:0 0 25px #FFD700;transition:0.4s;animation:buttonGlow 2s infinite;}
 @keyframes pulseOffer{0%,100%{transform:scale(1);box-shadow:0 0 40px #FFD700;}50%{transform:scale(1.05);box-shadow:0 0 70px #FFD700;}}
 @keyframes buttonGlow{0%,100%{box-shadow:0 0 15px #FFD700;}50%{box-shadow:0 0 35px #FFD700;}}
-
-/* Popup */
 .popupBg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:2000;opacity:0;transition:opacity 0.4s;}
 .popupBg.show{display:flex;opacity:1;}
 .popupContent{background:linear-gradient(135deg,#222,#111);padding:25px;border-radius:20px;text-align:center;width:90%;max-width:400px;position:relative;box-shadow:0 0 40px rgba(255,215,0,0.7);}
@@ -86,20 +59,16 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 .popupContent .option{padding:10px;border-radius:15px;background:#111;border:1px solid #FFD700;margin-top:10px;cursor:pointer;transition:0.3s;}
 .popupContent .option:hover{background:#FFD700;color:black;}
 .closeBtn{position:absolute;top:10px;right:15px;font-size:24px;font-weight:bold;cursor:pointer;color:#FFD700;}
-
-/* Job Updates Card */
 .pulseJobGroup{position: relative;overflow: hidden;color: white;font-weight:bold;border-radius:20px;border:2px solid #FFD700;transition: transform 0.3s, box-shadow 0.3s;animation: bouncePulse 2s infinite;margin-top:20px;}
 .pulseJobGroup::before{content:'';position:absolute;top:-10%; left:-10%;width:120%; height:120%;background:radial-gradient(circle, rgba(255,223,0,0.4) 0%, rgba(255,223,0,0) 70%);z-index:0;border-radius:25px;animation: pulseYellowGlow 2s infinite;}
 .pulseJobGroup > *{position: relative; z-index:1;}
 @keyframes pulseYellowGlow{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.1);opacity:1;}}
 @keyframes bouncePulse{0%,100%{transform: translateY(0);}50%{transform: translateY(-8px);}}
-
-/* Floating Thank You */
 #thankYouSection{background: linear-gradient(135deg, #222, #444, #222); padding:50px 20px; text-align:center; border-radius:20px; animation: floatGlow 3s infinite alternate;}
 @keyframes floatGlow {0% { transform: translateY(0); box-shadow: 0 0 20px rgba(255,215,0,0.3); } 50% { transform: translateY(-10px); box-shadow: 0 0 50px rgba(255,215,0,0.7); } 100% { transform: translateY(0); box-shadow: 0 0 20px rgba(255,215,0,0.3); }}
-
-/* Responsive */
 @media(max-width:600px){.container{flex-direction:column;gap:20px;}header img{width:100%;}}
+input, select, button{margin:5px; padding:10px; border-radius:15px; border:none; font-size:16px;}
+button{background:gold; cursor:pointer;}
 </style>
 </head>
 <body>
@@ -132,6 +101,20 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 
 <!-- Job Updates -->
 <a class="card pulseJobGroup" onclick="openJobGroup()" data-aos="fade-up">💼 Job Updates Group<br><br>Join our WhatsApp group for latest job updates!</a>
+</div>
+</section>
+
+<!-- Multi-Service Price Calculator -->
+<section class="section">
+<h2 class="gold" data-aos="fade-up">Price Calculator</h2>
+<div data-aos="fade-up">
+<label>Xerox (₹2): </label><input type="number" id="xeroxQty" placeholder="0" min="0"><br>
+<label>B/W Print (₹5): </label><input type="number" id="bwQty" placeholder="0" min="0"><br>
+<label>Colour Print (₹10): </label><input type="number" id="colorQty" placeholder="0" min="0"><br>
+<label>DTP (English ₹50 / Odia ₹80): </label><input type="number" id="dtpQty" placeholder="0" min="0"><br>
+<label>Lamination (₹30): </label><input type="number" id="lamQty" placeholder="0" min="0"><br>
+<button onclick="calculateTotal()">Calculate Total</button>
+<h3 id="totalResult"></h3>
 </div>
 </section>
 
@@ -185,6 +168,21 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <script>
 // Initialize AOS
 AOS.init({ duration: 1000 });
+
+// Multi-Service Price Calculator
+function calculateTotal(){
+  let total = 0;
+  total += (parseInt(document.getElementById("xeroxQty").value)||0) * 2;
+  total += (parseInt(document.getElementById("bwQty").value)||0) * 5;
+  total += (parseInt(document.getElementById("colorQty").value)||0) * 10;
+  total += (parseInt(document.getElementById("dtpQty").value)||0) * 50; // Default English
+  total += (parseInt(document.getElementById("lamQty").value)||0) * 30;
+  
+  // Apply 10% off if total > 500
+  let discount = 0;
+  if(total > 500) discount = total * 0.1;
+  document.getElementById("totalResult").innerHTML = "Total Price: ₹"+total+"<br>Discount: ₹"+discount+"<br>Final Price: ₹"+(total-discount);
+}
 
 // Online Form Popup
 function openOnlineForm(){ document.getElementById("onlineFormPopup").classList.add("show"); }
