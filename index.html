@@ -20,73 +20,43 @@ header img{width:95%;max-width:1000px;border-radius:20px;box-shadow:0 0 40px rgb
 .contact a{display:inline-block;margin:10px;padding:12px 25px;background:linear-gradient(45deg,#FFD700,#ffb347);color:black;border-radius:30px;text-decoration:none;font-weight:600;}
 footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 
-/* Special Offer Section */
+/* Special Offer */
 .pulseOffer{background:linear-gradient(135deg,#FFD700,#ffb347);border-radius:20px;margin:25px 5px;padding:25px;text-align:center;box-shadow:0 0 50px rgba(255,215,0,0.7);animation:pulseOffer 2s infinite;}
 .pulseOffer h2, .pulseOffer p{color:black;}
 .pulseOffer a{display:inline-block;padding:12px 25px;background:#000;color:#FFD700;font-weight:700;border-radius:25px;text-decoration:none;box-shadow:0 0 25px #FFD700;transition:0.4s;animation:buttonGlow 2s infinite;}
-
-/* Animations */
 @keyframes pulseOffer{0%,100%{transform:scale(1);box-shadow:0 0 40px #FFD700;}50%{transform:scale(1.05);box-shadow:0 0 70px #FFD700;}}
 @keyframes buttonGlow{0%,100%{box-shadow:0 0 15px #FFD700;}50%{box-shadow:0 0 35px #FFD700;}}
 
 /* Sticky WhatsApp Button */
-#whatsappButton {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  color: white;
-  padding: 15px 20px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-  z-index: 1000;
-}
+#whatsappButton {position: fixed;bottom: 20px;right: 20px;background: #25D366;color: white;padding: 15px 20px;border-radius: 50px;text-decoration: none;font-weight: bold;font-size: 16px;box-shadow: 0 4px 12px rgba(0,0,0,0.3);transition: transform 0.3s, box-shadow 0.3s;z-index: 1000;}
 #whatsappButton:hover {transform: translateY(-3px);box-shadow: 0 6px 20px rgba(0,0,0,0.5);}
 
 /* Collapsible Online Form Folder */
 #folderOptions{display:none;flex-direction:column;margin-top:15px;}
-.option{
-  padding:10px;
-  border-radius:15px;
-  background:linear-gradient(135deg,#222,#111);
-  border:1px solid #FFD700;
-  cursor:pointer;
-  transition:0.3s;
-  box-shadow:0 0 10px rgba(255,215,0,0.2);
-  font-weight:500;
-  margin-top:5px;
-}
+.option{padding:10px;border-radius:15px;background:linear-gradient(135deg,#222,#111);border:1px solid #FFD700;cursor:pointer;transition:0.3s;box-shadow:0 0 10px rgba(255,215,0,0.2);font-weight:500;margin-top:5px;}
 .option:hover{background:linear-gradient(135deg,#FFD700,#ffb347);color:black;box-shadow:0 0 25px rgba(255,215,0,0.8);transform:translateY(-3px);}
 
 /* Job Updates Group Card - Pulse + Bounce */
-.pulseJobGroup{
-  position: relative;
-  overflow: hidden;
-  color: white;
-  font-weight:bold;
-  border-radius:20px;
-  border:2px solid #FFD700;
-  transition: transform 0.3s, box-shadow 0.3s;
-  animation: bouncePulse 2s infinite;
-}
-.pulseJobGroup::before{
-  content:'';
-  position:absolute;
-  top:-10%; left:-10%;
-  width:120%; height:120%;
-  background:radial-gradient(circle, rgba(255,223,0,0.4) 0%, rgba(255,223,0,0) 70%);
-  z-index:0;
-  border-radius:25px;
-  animation: pulseYellowGlow 2s infinite;
-}
+.pulseJobGroup{position: relative;overflow: hidden;color: white;font-weight:bold;border-radius:20px;border:2px solid #FFD700;transition: transform 0.3s, box-shadow 0.3s;animation: bouncePulse 2s infinite;}
+.pulseJobGroup::before{content:'';position:absolute;top:-10%; left:-10%;width:120%; height:120%;background:radial-gradient(circle, rgba(255,223,0,0.4) 0%, rgba(255,223,0,0) 70%);z-index:0;border-radius:25px;animation: pulseYellowGlow 2s infinite;}
 .pulseJobGroup > *{position: relative; z-index:1;}
 @keyframes pulseYellowGlow{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.1);opacity:1;}}
 @keyframes bouncePulse{0%,100%{transform: translateY(0);}50%{transform: translateY(-8px);}}
 .pulseJobGroup:hover{transform:translateY(-5px);box-shadow:0 0 50px #FFD700;}
+
+/* Floating Thank You */
+#thankYouSection{background: linear-gradient(135deg, #222, #444, #222); padding:50px 20px; text-align:center; border-radius:20px; animation: floatGlow 3s infinite alternate;}
+@keyframes floatGlow {0% { transform: translateY(0); box-shadow: 0 0 20px rgba(255,215,0,0.3); } 50% { transform: translateY(-10px); box-shadow: 0 0 50px rgba(255,215,0,0.7); } 100% { transform: translateY(0); box-shadow: 0 0 20px rgba(255,215,0,0.3); }}
+
+/* Offer Popup */
+#offerPopup {position: fixed;top: 0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.6);display:flex;justify-content:center;align-items:center;z-index:2000;animation: fadeIn 0.6s; display:none;}
+#offerContent {background: linear-gradient(135deg,#FFD700,#ffb347);padding: 30px;border-radius: 20px;text-align:center;width: 90%;max-width:400px;box-shadow: 0 0 40px #FFD700; animation: floatPopup 2s infinite alternate;position:relative;}
+#offerContent h2, #offerContent p{color:black;margin-bottom:20px;}
+#offerContent a{display:inline-block;padding:12px 25px;background:#000;color:#FFD700;font-weight:bold;border-radius:25px;text-decoration:none;box-shadow:0 0 20px #FFD700;transition:0.3s;}
+#offerContent a:hover{transform: scale(1.05); box-shadow:0 0 35px #FFD700;}
+#closeOffer {position:absolute; top:10px; right:15px; font-size:24px; font-weight:bold; cursor:pointer; color:#000;}
+@keyframes floatPopup{0%{ transform: translateY(0);}50%{ transform: translateY(-10px);}100%{ transform: translateY(0);}}
+@keyframes fadeIn{0%{opacity:0;}100%{opacity:1;}}
 </style>
 </head>
 <body>
@@ -97,7 +67,7 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <p>Fast • Affordable • Trusted Service in Paralakhemundi</p>
 </header>
 
-<!-- SPECIAL OFFER -->
+<!-- SPECIAL OFFER BANNER -->
 <section class="pulseOffer">
 <h2>🔥 Special Offer!</h2>
 <p>Get <strong>10% OFF</strong> on all orders above <strong>₹500</strong>!</p>
@@ -108,7 +78,6 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <section class="section">
 <h2 class="gold">Our Services & Prices</h2>
 <div class="container">
-
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Xerox%20service." target="_blank">📄 Xerox<br><br><strong>₹2 per page</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Black%20and%20White%20printing." target="_blank">🖨 Black & White Printing<br><br><strong>₹5 per page</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Colour%20printing." target="_blank">🎨 Colour Printing<br><br><strong>₹10 per page</strong></a>
@@ -144,42 +113,57 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 </div>
 </section>
 
-<!-- PRICE CALCULATOR -->
+<!-- MULTI-SERVICE PRICE CALCULATOR -->
 <section class="section">
 <h2 class="gold">Price Calculator</h2>
-<input type="number" id="pages" placeholder="Enter number of pages" style="padding:10px;margin:10px;">
-<select id="service" style="padding:10px;margin:10px;">
-<option value="2">Xerox (₹2)</option>
-<option value="5">B/W Print (₹5)</option>
-<option value="10">Colour Print (₹10)</option>
-<option value="50">English DTP (₹50)</option>
-<option value="80">Odia DTP (₹80)</option>
-</select>
+<p>Select the services you want:</p>
+<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-bottom:20px;">
+  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="2"> 📄 Xerox (₹2/page)</label>
+  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="5"> 🖨 B/W Print (₹5/page)</label>
+  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="10"> 🎨 Colour Print (₹10/page)</label>
+  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="50"> 🖥 English DTP (₹50/page)</label>
+  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="80"> 🖥 Odia DTP (₹80/page)</label>
+  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="30"> 📑 Lamination (₹30/page)</label>
+</div>
+<input type="number" id="pages" placeholder="Enter number of pages" style="padding:10px;margin:10px; width:200px;">
 <br><br>
-<button onclick="calculate()" style="padding:10px 20px;background:gold;border:none;border-radius:20px;">Calculate Price</button>
+<button onclick="calculateMultiple()" style="padding:10px 20px;background:gold;border:none;border-radius:20px;">Calculate Total Price</button>
 <h3 id="result"></h3>
-</section>
 
 <script>
-function calculate(){
-  var pages=document.getElementById("pages").value;
-  var rate=document.getElementById("service").value;
-  var total=pages*rate;
-  document.getElementById("result").innerHTML="Total Price: ₹"+total;
+function calculateMultiple(){
+  var pages = Number(document.getElementById("pages").value);
+  var services = document.querySelectorAll(".calcService:checked");
+  var total = 0;
+  services.forEach(function(service){
+    total += Number(service.value) * pages;
+  });
+  if(services.length === 0){
+    document.getElementById("result").innerHTML = "Please select at least one service.";
+  } else if(pages <= 0){
+    document.getElementById("result").innerHTML = "Please enter number of pages.";
+  } else{
+    document.getElementById("result").innerHTML = "Total Price: ₹" + total;
+  }
 }
+
 function toggleFolder(){
   var folder = document.getElementById("folderOptions");
-  if(folder.style.display === "none" || folder.style.display === ""){
-    folder.style.display = "flex";
-  } else {folder.style.display = "none";}
+  folder.style.display = (folder.style.display === "flex") ? "none" : "flex";
 }
+
 function sendForm(service,event){
   event.stopPropagation();
   var message = encodeURIComponent("Hello, I want to apply for: " + service + " from Sri Ganesh Xerox Centre.");
   var whatsappURL = "https://wa.me/918917699445?text=" + message;
   window.open(whatsappURL,"_blank");
 }
+
+// Offer popup
+function closeOffer(){ document.getElementById("offerPopup").style.display="none"; }
+window.onload=function(){ setTimeout(function(){ document.getElementById("offerPopup").style.display="flex"; },2000);}
 </script>
+</section>
 
 <!-- WHY CHOOSE US -->
 <section class="section">
@@ -210,16 +194,8 @@ function sendForm(service,event){
 <a href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">💼 Join Job Updates Group</a>
 </section>
 
-<!-- THANK YOU SECTION -->
-<section id="thankYouSection" class="section" style="background:#111; padding:50px 20px; text-align:center;">
-<h2 class="gold">🙏 Thank You for Visiting!</h2>
-<p style="color:#FFD700; font-size:18px;">We appreciate your visit and hope to see you again soon.</p>
-<a href="https://wa.me/918917699445" style="display:inline-block;padding:12px 25px;background:#FFD700;color:#000;font-weight:bold;border-radius:25px;text-decoration:none;margin-top:15px;">Contact Us on WhatsApp</a>
-</section>
-
-<!-- STICKY WHATSAPP BUTTON -->
-<a href="https://wa.me/918917699445" target="_blank" id="whatsappButton">💬 WhatsApp</a>
-
-<footer>© 2026 Sri Ganesh Xerox Centre | All Rights Reserved</footer>
-</body>
-</html>
+<!-- FLOATING THANK YOU SECTION -->
+<section id="thankYouSection">
+<h2 class="gold" style="font-size:32px;">🙏 Thank You for Visiting!</h2>
+<p style="color:#FFD700; font-size:18px; margin:15px 0;">We appreciate your visit and hope to see you again soon.</p>
+<a href="https://wa.me/918917699445" style="display:inline-block; padding
