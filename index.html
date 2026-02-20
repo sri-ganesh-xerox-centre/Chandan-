@@ -3,25 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Ganesh Xerox Centre - Reviews</title>
+<title>Sri Ganesh Xerox Centre</title>
 
 <style>
 
 body{
   margin:0;
-  font-family:Arial, sans-serif;
+  font-family:Arial;
   background:#0f0f0f;
   color:white;
+}
+
+header{
+  background:black;
+  padding:15px;
+  text-align:center;
+  font-size:22px;
+  color:gold;
+  font-weight:bold;
+}
+
+section{
+  padding:40px 20px;
   text-align:center;
 }
 
 h2{
   color:gold;
-  margin-top:40px;
 }
 
-.section{
-  padding:40px 20px;
+.card{
+  background:#111;
+  padding:20px;
+  margin:15px;
+  border-radius:15px;
+  box-shadow:0 0 10px rgba(255,215,0,0.3);
 }
 
 .feedback-box{
@@ -37,35 +53,19 @@ h2{
   padding:10px;
   border-radius:10px;
   border:none;
-  outline:none;
-}
-
-textarea{
-  height:100px;
 }
 
 button{
   padding:10px;
   border:none;
   border-radius:10px;
-  cursor:pointer;
   font-weight:bold;
+  cursor:pointer;
 }
 
 .submit-btn{
   background:gold;
   color:black;
-}
-
-.google-btn{
-  background:#ffffff;
-  color:black;
-}
-
-.admin-btn{
-  background:red;
-  color:white;
-  margin-top:20px;
 }
 
 .star-rating{
@@ -78,38 +78,11 @@ button{
   color:gold;
 }
 
-.avg-rating{
-  margin-bottom:20px;
-  font-size:18px;
-}
-
-.carousel{
-  max-width:600px;
-  margin:30px auto;
-  overflow:hidden;
-}
-
-.review-slider{
-  display:flex;
-  transition:0.5s;
-}
-
-.review-card{
-  min-width:100%;
-  background:#111;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 0 15px rgba(255,215,0,0.3);
-}
-
-.review-card h3{
-  color:gold;
-}
-
-.review-card button{
-  background:red;
-  color:white;
-  margin-top:10px;
+footer{
+  background:black;
+  padding:15px;
+  text-align:center;
+  margin-top:40px;
 }
 
 </style>
@@ -117,13 +90,52 @@ button{
 
 <body>
 
-<div class="section">
+<header>
+Sri Ganesh Xerox Centre
+</header>
 
-<h2>⭐ Customer Reviews</h2>
-
-<div class="avg-rating">
-Average Rating: <span id="avgRating">0</span> ⭐
+<!-- HOME -->
+<section>
+<h2>Welcome</h2>
+<div class="card">
+We provide Xerox, Printout, Lamination, Online Services and more.
+Fast Service | Best Price | Quality Work
 </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+<h2>Our Services</h2>
+
+<div class="card">📄 Xerox (B/W & Color)</div>
+<div class="card">🖨 Printout (A4, Legal)</div>
+<div class="card">📑 Lamination</div>
+<div class="card">💻 Online Form Fillup</div>
+<div class="card">📸 Photo Print</div>
+
+</section>
+
+<!-- PRICE LIST -->
+<section>
+<h2>Price List</h2>
+<div class="card">Black & White Xerox – ₹2</div>
+<div class="card">Color Xerox – ₹10</div>
+<div class="card">Printout – ₹5</div>
+<div class="card">Lamination – ₹20</div>
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2>Contact Us</h2>
+<div class="card">
+📍 In Front of New Court, Paralakhemundi<br><br>
+📞 8917699445
+</div>
+</section>
+
+<!-- FEEDBACK (LAST SECTION) -->
+<section>
+<h2>⭐ Customer Feedback</h2>
 
 <div class="feedback-box">
 
@@ -140,26 +152,19 @@ Average Rating: <span id="avgRating">0</span> ⭐
 
 <textarea id="custMessage" placeholder="Write your feedback..."></textarea>
 
-<button class="submit-btn" onclick="submitFeedback()">Submit Review</button>
-
-<a href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK" target="_blank">
-<button class="google-btn">Rate Us on Google</button>
-</a>
+<button class="submit-btn" onclick="submitFeedback()">Submit Feedback</button>
 
 </div>
 
-<div class="carousel">
-  <div id="reviewSlider" class="review-slider"></div>
-</div>
+</section>
 
-<button class="admin-btn" onclick="adminLogin()">Admin Panel</button>
-
-</div>
+<footer>
+© 2026 Sri Ganesh Xerox Centre | All Rights Reserved
+</footer>
 
 <script>
 
 let selectedRating = 0;
-let currentSlide = 0;
 
 function rate(stars){
   selectedRating = stars;
@@ -179,105 +184,23 @@ function submitFeedback(){
     return;
   }
 
-  let review = {
-    id: Date.now(),
-    name,
-    rating:selectedRating,
-    message
-  };
+  let text = encodeURIComponent(
+    "Customer Feedback\n\n"+
+    "Name: "+name+"\n"+
+    "Mobile: "+mobile+"\n"+
+    "Rating: "+selectedRating+" Stars\n"+
+    "Message: "+message
+  );
 
-  let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-  reviews.push(review);
-  localStorage.setItem("reviews", JSON.stringify(reviews));
+  window.open("https://wa.me/918917699445?text="+text,"_blank");
 
-  sendToWhatsApp(name, selectedRating, message);
-
-  displayReviews();
-  calculateAverage();
+  alert("Thank you for your feedback!");
 
   document.getElementById("custName").value="";
   document.getElementById("custMobile").value="";
   document.getElementById("custMessage").value="";
   rate(0);
 }
-
-function displayReviews(){
-  let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-  let slider = document.getElementById("reviewSlider");
-  slider.innerHTML="";
-
-  reviews.forEach(r=>{
-    slider.innerHTML += `
-      <div class="review-card">
-        <h3>${r.name}</h3>
-        <p>${"★".repeat(r.rating)}</p>
-        <p>${r.message}</p>
-        <button onclick="deleteReview(${r.id})">Delete</button>
-      </div>
-    `;
-  });
-}
-
-function calculateAverage(){
-  let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-  if(reviews.length===0){
-    document.getElementById("avgRating").innerText="0";
-    return;
-  }
-
-  let total = reviews.reduce((sum,r)=>sum+r.rating,0);
-  let avg = (total/reviews.length).toFixed(1);
-  document.getElementById("avgRating").innerText=avg;
-}
-
-function sendToWhatsApp(name,rating,message){
-  let text = encodeURIComponent(
-    "Customer Review\n\n"+
-    "Name: "+name+"\n"+
-    "Rating: "+rating+" Stars\n"+
-    "Message: "+message
-  );
-  window.open("https://wa.me/918917699445?text="+text,"_blank");
-}
-
-function adminLogin(){
-  let pass = prompt("Enter Admin Password");
-  if(pass==="admin123"){
-    alert("Admin Mode Activated");
-  }else{
-    alert("Wrong Password");
-  }
-}
-
-function deleteReview(id){
-  let pass = prompt("Enter Admin Password to Delete");
-  if(pass!=="admin123"){
-    alert("Wrong Password");
-    return;
-  }
-
-  let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-  reviews = reviews.filter(r=>r.id!==id);
-  localStorage.setItem("reviews", JSON.stringify(reviews));
-  displayReviews();
-  calculateAverage();
-}
-
-function autoSlide(){
-  let slider = document.getElementById("reviewSlider");
-  let total = slider.children.length;
-  if(total===0) return;
-
-  currentSlide++;
-  if(currentSlide>=total) currentSlide=0;
-
-  slider.style.transform = `translateX(-${currentSlide*100}%)`;
-}
-
-setInterval(autoSlide,3000);
-
-displayReviews();
-calculateAverage();
 
 </script>
 
