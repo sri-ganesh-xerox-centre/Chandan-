@@ -3,273 +3,198 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Ganesh Xerox Centre</title>
+<title>Sri Ganesh Xerox Centre - Paralakhemundi</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFD700">
+
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:linear-gradient(135deg,#000,#1a1a1a,#000);color:white;}
 html{scroll-behavior:smooth;}
-.gold{
-background:linear-gradient(45deg,#FFD700,#ffb347,#FFD700);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+body{background:linear-gradient(135deg,#000,#1a1a1a,#000);color:white;}
+.gold{background:linear-gradient(45deg,#FFD700,#ffb347,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
 header{text-align:center;padding:50px 20px;}
-.section{padding:60px 20px;text-align:center;background:#111;}
+header img{width:95%;max-width:1000px;border-radius:20px;box-shadow:0 0 40px rgba(255,215,0,0.7);}
+header h1{margin-top:15px;}
+header p{margin-top:5px;color:#ddd;}
+
+.section{padding:70px 20px;text-align:center;background:#111;}
+.section h2{margin-bottom:40px;font-size:30px;}
 .container{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;}
+
 .card{
-background:linear-gradient(135deg,#222,#111);
-border:1px solid gold;
-width:260px;
-padding:25px;
-border-radius:20px;
-cursor:pointer;
-transition:0.3s;
+  background:linear-gradient(135deg,#222,#111);
+  border:1px solid #FFD700;
+  width:260px;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 4px 15px rgba(255,215,0,0.3);
+  transition:0.3s;
+  text-decoration:none;
+  color:white;
+  display:block;
+  cursor:pointer;
 }
-.card:hover{transform:translateY(-10px);box-shadow:0 0 40px gold;}
-button{
-background:linear-gradient(45deg,#FFD700,#ffb347);
-border:none;
-padding:10px 20px;
-border-radius:25px;
-cursor:pointer;
-}
-input,select{
-padding:8px;
-margin:6px;
-border-radius:10px;
-border:none;
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 60px rgba(255,215,0,0.8);
 }
 
-/* Popup */
-.popupBg{
-display:none;
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.6);
-justify-content:center;
-align-items:center;
-z-index:999;
-}
-.popupBg.show{display:flex;}
-.popupContent{
-background:#111;
-padding:25px;
-border-radius:20px;
-width:95%;
-max-width:420px;
-position:relative;
-box-shadow:0 0 40px gold;
-}
-.closeBtn{
-position:absolute;
-top:10px;
-right:15px;
-font-size:22px;
-cursor:pointer;
-color:gold;
-}
+.contact{padding:70px 20px;text-align:center;background:#000;}
+.contact a{display:inline-block;margin:10px;padding:12px 25px;background:linear-gradient(45deg,#FFD700,#ffb347);color:black;border-radius:30px;text-decoration:none;font-weight:600;transition:0.3s;}
+.contact a:hover{transform:scale(1.1);}
 
-/* Tabs */
-.tabs{
-display:flex;
-gap:5px;
-justify-content:center;
-margin-bottom:15px;
-flex-wrap:wrap;
-}
-.tabBtn{
-padding:6px 12px;
-border-radius:20px;
-border:1px solid gold;
-background:#111;
-color:white;
-cursor:pointer;
-transition:0.3s;
-}
-.tabBtn:hover{background:gold;color:black;}
-.activeTab{background:gold;color:black;}
+footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 
-.backBtn{
-margin-bottom:10px;
-background:#333;
-color:white;
-border-radius:15px;
-padding:5px 12px;
-cursor:pointer;
-}
+.pulseOffer{background:linear-gradient(135deg,#FFD700,#ffb347);border-radius:20px;margin:25px;padding:25px;text-align:center;box-shadow:0 0 50px rgba(255,215,0,0.7);animation:pulseOffer 2s infinite;}
+.pulseOffer h2,.pulseOffer p{color:black;}
+.pulseOffer a{display:inline-block;padding:12px 25px;background:#000;color:#FFD700;font-weight:700;border-radius:25px;text-decoration:none;}
+@keyframes pulseOffer{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
 
-/* Services */
-.option{
-padding:8px;
-margin:6px 0;
-border:1px solid gold;
-border-radius:15px;
-cursor:pointer;
-transition:0.3s;
-}
-.option:hover{background:gold;color:black;}
+.popupBg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:2000;opacity:0;transition:0.4s;}
+.popupBg.show{display:flex;opacity:1;}
+.popupContent{background:linear-gradient(135deg,#222,#111);padding:25px;border-radius:20px;text-align:center;width:90%;max-width:400px;position:relative;box-shadow:0 0 40px rgba(255,215,0,0.7);}
+.popupContent h2{margin-bottom:15px;color:#FFD700;}
+.popupContent .option{padding:12px;border-radius:15px;background:#111;border:1px solid #FFD700;margin-top:10px;cursor:pointer;transition:0.3s;}
+.popupContent .option:hover{background:#FFD700;color:black;}
+.closeBtn{position:absolute;top:10px;right:15px;font-size:22px;cursor:pointer;color:#FFD700;}
 
-.serviceCategory{animation:slideIn 0.4s ease;}
-@keyframes slideIn{
-from{opacity:0;transform:translateX(20px);}
-to{opacity:1;transform:translateX(0);}
-}
+input,select,button{margin:5px;padding:10px;border-radius:15px;border:none;font-size:16px;}
+button{background:gold;cursor:pointer;}
 
-footer{text-align:center;padding:20px;background:#000;color:#aaa;}
+@media(max-width:600px){.container{flex-direction:column;}}
 </style>
 </head>
 
 <body>
 
-<header>
+<header data-aos="fade-down">
+<img src="logo.jpg" alt="Sri Ganesh Xerox Centre Logo">
 <h1 class="gold">Sri Ganesh Xerox Centre</h1>
-<p>Fast • Affordable • Trusted Service</p>
+<p>Fast • Affordable • Trusted Service in Paralakhemundi</p>
 </header>
+
+<section class="pulseOffer">
+<h2>🔥 Special Offer!</h2>
+<p>Get 10% OFF on orders above ₹500</p>
+<a href="https://wa.me/918917699445">Claim on WhatsApp</a>
+</section>
 
 <section class="section">
 <h2 class="gold">Our Services</h2>
 <div class="container">
-<div class="card" onclick="openOnlineForm()">🖥 Online Form Fillup</div>
-<div class="card">📄 Xerox ₹2</div>
-<div class="card">🖨 Print ₹5</div>
-<div class="card">📑 Lamination ₹30</div>
+
+<a class="card" onclick="openOnlineForm()">🖥 Online Form Fillup</a>
+<a class="card" href="https://wa.me/918917699445">📄 Xerox ₹2</a>
+<a class="card" href="https://wa.me/918917699445">🖨 B/W Print ₹5</a>
+<a class="card" href="https://wa.me/918917699445">🎨 Colour Print ₹10</a>
+<a class="card" href="https://wa.me/918917699445">📑 Lamination ₹30</a>
+<a class="card" href="https://wa.me/918917699445">📸 Passport Photo ₹50</a>
+<a class="card" onclick="openJobGroup()">💼 Job Updates Group</a>
+
 </div>
 </section>
 
 <section class="section">
 <h2 class="gold">Price Calculator</h2>
-<input type="number" id="xeroxQty" placeholder="Xerox Qty">
-<input type="number" id="dtpQty" placeholder="DTP Qty">
+
+<label>Xerox (₹2)</label>
+<input type="number" id="xeroxQty" min="0"><br>
+
+<label>B/W Print (₹5)</label>
+<input type="number" id="bwQty" min="0"><br>
+
+<label>Colour Print (₹10)</label>
+<input type="number" id="colorQty" min="0"><br>
+
+<label>DTP</label>
 <select id="dtpType">
 <option value="50">English ₹50</option>
 <option value="80">Odia ₹80</option>
 </select>
-<input type="number" id="lamQty" placeholder="Lamination Qty"><br>
-<button onclick="calculateTotal()">Calculate</button>
+<input type="number" id="dtpQty" min="0"><br>
+
+<label>Lamination (₹30)</label>
+<input type="number" id="lamQty" min="0"><br>
+
+<button onclick="calculateTotal()">Calculate Total</button>
 <h3 id="totalResult"></h3>
 </section>
 
 <!-- ONLINE FORM POPUP -->
 <div class="popupBg" id="onlineFormPopup">
 <div class="popupContent">
-
 <span class="closeBtn" onclick="closeOnlineForm()">&times;</span>
-<h2>🖥 Online Form Services</h2>
+<h2>Online Form Services</h2>
 
-<input type="text" id="serviceSearch" placeholder="🔍 Search..."
-onkeyup="searchService()" style="width:100%;margin-bottom:10px;">
-
-<div class="tabs">
-<button class="tabBtn activeTab" onclick="showCategory('govt',this)">📜 Govt</button>
-<button class="tabBtn" onclick="showCategory('id',this)">🪪 ID</button>
-<button class="tabBtn" onclick="showCategory('verify',this)">🚔 Verify</button>
-<button class="tabBtn" onclick="showCategory('other',this)">⚡ Other</button>
-</div>
-
-<div id="govt" class="serviceCategory">
-<div class="option" onclick="selectService('Caste Certificate',150)">📄 Caste – ₹150</div>
-<div class="option" onclick="selectService('Residence Certificate',150)">🏠 Residence – ₹150</div>
-<div class="option" onclick="selectService('Income Certificate',150)">💰 Income – ₹150</div>
-<div class="option" onclick="selectService('Legal Heir',200)">👪 Legal Heir – ₹200</div>
-</div>
-
-<div id="id" class="serviceCategory" style="display:none;">
-<button onclick="goBack()" class="backBtn">⬅ Back</button>
-<div class="option" onclick="selectService('PAN Card',250)">🪪 PAN – ₹250</div>
-<div class="option" onclick="selectService('Driving License',200)">🚗 DL – ₹200</div>
-<div class="option" onclick="selectService('Labour Card',200)">👷 Labour – ₹200</div>
-</div>
-
-<div id="verify" class="serviceCategory" style="display:none;">
-<button onclick="goBack()" class="backBtn">⬅ Back</button>
-<div class="option" onclick="selectService('Police Verification',150)">🚔 Police – ₹150</div>
-</div>
-
-<div id="other" class="serviceCategory" style="display:none;">
-<button onclick="goBack()" class="backBtn">⬅ Back</button>
-<div class="option" onclick="selectService('Other Service',150)">📝 Other – ₹150</div>
-</div>
+<div class="option" onclick="applyService('Cast Certificate')">Cast Certificate</div>
+<div class="option" onclick="applyService('Residence Certificate')">Residence Certificate</div>
+<div class="option" onclick="applyService('Income Certificate')">Income Certificate</div>
+<div class="option" onclick="applyService('Legal Heir Certificate')">Legal Heir Certificate</div>
+<div class="option" onclick="applyService('Pan Card')">Pan Card</div>
+<div class="option" onclick="applyService('Labour Card')">Labour Card</div>
+<div class="option" onclick="applyService('Police Verification')">Police Verification</div>
+<div class="option" onclick="applyService('Driving License')">Driving License</div>
+<div class="option" onclick="applyService('New Current Connection')">New Current Connection</div>
+<div class="option" onclick="applyService('Other Service')">Other Service</div>
 
 </div>
 </div>
 
-<!-- CONFIRM POPUP -->
-<div class="popupBg" id="confirmPopup">
+<!-- JOB GROUP POPUP -->
+<div class="popupBg" id="jobGroupPopup">
 <div class="popupContent">
-<span class="closeBtn" onclick="closeConfirmPopup()">&times;</span>
-<h2 id="confirmTitle"></h2>
-<p id="confirmText"></p>
-<button onclick="sendToWhatsApp()">Confirm & Send</button>
+<span class="closeBtn" onclick="closeJobGroup()">&times;</span>
+<h2>💼 Job Updates Group</h2>
+<p>Join our WhatsApp group for latest job updates.</p>
+<a href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">Join Now</a>
 </div>
 </div>
+
+<section class="contact">
+<h2 class="gold">Contact Us</h2>
+<p>📍 In Front of New Court, Paralakhemundi</p>
+<p>📞 +91 8917699445</p>
+<a href="https://wa.me/918917699445">Chat on WhatsApp</a>
+</section>
 
 <footer>
-© 2026 Sri Ganesh Xerox Centre
+© 2026 Sri Ganesh Xerox Centre | All Rights Reserved
 </footer>
 
 <script>
-function openOnlineForm(){onlineFormPopup.classList.add("show");}
-function closeOnlineForm(){onlineFormPopup.classList.remove("show");}
+AOS.init();
 
 function calculateTotal(){
 let total=0;
 total+=(parseInt(xeroxQty.value)||0)*2;
+total+=(parseInt(bwQty.value)||0)*5;
+total+=(parseInt(colorQty.value)||0)*10;
 total+=(parseInt(dtpQty.value)||0)*parseInt(dtpType.value);
 total+=(parseInt(lamQty.value)||0)*30;
-let discount=total>500?total*0.1:0;
-totalResult.innerHTML="Total ₹"+total+"<br>Discount ₹"+discount+
-"<br><strong>Final ₹"+(total-discount)+"</strong>";
+
+let discount=0;
+if(total>500) discount=total*0.1;
+
+totalResult.innerHTML="Total: ₹"+total+"<br>Discount: ₹"+discount+"<br><strong>Final: ₹"+(total-discount)+"</strong>";
 }
 
-function showCategory(category,btn){
-let cats=document.getElementsByClassName("serviceCategory");
-for(let i=0;i<cats.length;i++)cats[i].style.display="none";
-document.getElementById(category).style.display="block";
+function openOnlineForm(){onlineFormPopup.classList.add("show");}
+function closeOnlineForm(){onlineFormPopup.classList.remove("show");}
 
-let tabs=document.getElementsByClassName("tabBtn");
-for(let i=0;i<tabs.length;i++)tabs[i].classList.remove("activeTab");
-btn.classList.add("activeTab");
-}
-
-function goBack(){
-showCategory('govt',document.getElementsByClassName("tabBtn")[0]);
-}
-
-function searchService(){
-let input=serviceSearch.value.toLowerCase();
-let options=document.getElementsByClassName("option");
-for(let i=0;i<options.length;i++){
-options[i].style.display=
-options[i].innerText.toLowerCase().includes(input)
-? "block":"none";
-}
-}
-
-let selectedService="",selectedPrice=0;
-
-function selectService(service,price){
-selectedService=service;
-selectedPrice=price;
-confirmTitle.innerText=service;
-confirmText.innerText="Service Charge: ₹"+price+
-"\nDo you want to continue?";
-confirmPopup.classList.add("show");
-}
-
-function closeConfirmPopup(){confirmPopup.classList.remove("show");}
-
-function sendToWhatsApp(){
-let msg=encodeURIComponent(
-"Hello, I want to apply for "+selectedService+
-"\nCharge: ₹"+selectedPrice);
-window.open("https://wa.me/918917699445?text="+msg,"_blank");
-closeConfirmPopup();
+function applyService(service){
+let message=encodeURIComponent("Hello, I want to apply for "+service+" from Sri Ganesh Xerox Centre.");
+window.open("https://wa.me/918917699445?text="+message,"_blank");
 closeOnlineForm();
 }
+
+function openJobGroup(){jobGroupPopup.classList.add("show");}
+function closeJobGroup(){jobGroupPopup.classList.remove("show");}
 </script>
 
 </body>
