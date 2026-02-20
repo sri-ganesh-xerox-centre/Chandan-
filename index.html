@@ -14,7 +14,7 @@ header img{width:95%;max-width:1000px;border-radius:20px;box-shadow:0 0 40px rgb
 .section{padding:70px 20px;text-align:center;background:#111;}
 .section h2{margin-bottom:40px;font-size:30px;}
 .container{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;}
-.card{background:linear-gradient(135deg,#222,#111);border:1px solid #FFD700;width:260px;padding:25px;border-radius:20px;box-shadow:0 0 20px rgba(255,215,0,0.3);transition:0.4s;text-decoration:none;color:white;display:block;cursor:pointer;}
+.card{background:linear-gradient(135deg,#222,#111);border:1px solid #FFD700;width:260px;padding:25px;border-radius:20px;box-shadow:0 0 20px rgba(255,215,0,0.3);transition:0.4s;text-decoration:none;color:white;display:block;cursor:pointer;text-align:center;}
 .card:hover{transform:translateY(-10px);box-shadow:0 0 40px rgba(255,215,0,0.9);}
 .contact{padding:70px 20px;text-align:center;background:#000;}
 .contact a{display:inline-block;margin:10px;padding:12px 25px;background:linear-gradient(45deg,#FFD700,#ffb347);color:black;border-radius:30px;text-decoration:none;font-weight:600;}
@@ -74,19 +74,40 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
   transform:translateY(-3px);
 }
 
-/* Pulsing effect for Job Updates Group Card */
+/* Pulsing Yellow Background for Job Updates Group Card */
 .pulseJobGroup{
-  animation: pulseJob 2s infinite;
-  border:2px solid #25D366;
-  box-shadow:0 0 20px #25D366;
+  position: relative;
+  overflow: hidden;
+  color: black;
+  border:2px solid #FFD700;
+  font-weight:bold;
+  border-radius:20px;
 }
-@keyframes pulseJob{
-  0%,100%{transform:scale(1);box-shadow:0 0 20px #25D366;}
-  50%{transform:scale(1.05);box-shadow:0 0 50px #25D366;}
+
+.pulseJobGroup::before{
+  content:'';
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(45deg,#FFD700,#ffea70);
+  z-index:0;
+  border-radius:20px;
+  animation: pulseYellow 2s infinite;
+  opacity:0.7;
 }
+
+.pulseJobGroup > *{
+  position: relative; /* keep text above animation */
+  z-index:1;
+}
+
+@keyframes pulseYellow{
+  0%,100%{transform:scale(1);opacity:0.7;}
+  50%{transform:scale(1.05);opacity:1;}
+}
+
 .pulseJobGroup:hover{
   transform:translateY(-5px);
-  box-shadow:0 0 70px #25D366;
+  box-shadow:0 0 50px #FFD700;
 }
 </style>
 </head>
@@ -137,7 +158,7 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank">📸 Passport Photo<br><br><strong>₹50</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank">📂 Spiral Binding<br><br><strong>Starting ₹150</strong></a>
 
-<!-- WHATSAPP JOB UPDATES GROUP CARD (Glowing/Pulsing) -->
+<!-- WHATSAPP JOB UPDATES GROUP CARD (Yellow Pop Background) -->
 <a class="card pulseJobGroup" href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">
 💼 Job Updates Group<br><br>Join our WhatsApp group for latest job updates!
 </a>
