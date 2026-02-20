@@ -74,7 +74,7 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <a href="https://wa.me/918917699445?text=Hello%20I%20want%20to%20avail%20the%2010%25%20off%20offer%20for%20orders%20above%20500.">Claim Offer on WhatsApp</a>
 </section>
 
-<!-- SERVICES WITH PRICE -->
+<!-- SERVICES -->
 <section class="section">
 <h2 class="gold">Our Services & Prices</h2>
 <div class="container">
@@ -83,7 +83,7 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Colour%20printing." target="_blank">🎨 Colour Printing<br><br><strong>₹10 per page</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Lamination%20service." target="_blank">📑 Lamination<br><br><strong>₹30 per page</strong></a>
 
-<!-- COLLAPSIBLE ONLINE FORM FILLUP -->
+<!-- Online Form Folder -->
 <div class="card" id="onlineFormCard" onclick="toggleFolder()">
   🖥 Online Form Fillup<br><br>
   <strong>₹150 per form</strong>
@@ -105,7 +105,7 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank">📸 Passport Photo<br><br><strong>₹50</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank">📂 Spiral Binding<br><br><strong>Starting ₹150</strong></a>
 
-<!-- WHATSAPP JOB UPDATES GROUP CARD -->
+<!-- Job Updates Group -->
 <a class="card pulseJobGroup" href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">
 💼 Job Updates Group<br><br>Join our WhatsApp group for latest job updates!
 </a>
@@ -116,37 +116,36 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <!-- MULTI-SERVICE PRICE CALCULATOR -->
 <section class="section">
 <h2 class="gold">Price Calculator</h2>
-<p>Select the services you want:</p>
-<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-bottom:20px;">
-  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="2"> 📄 Xerox (₹2/page)</label>
-  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="5"> 🖨 B/W Print (₹5/page)</label>
-  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="10"> 🎨 Colour Print (₹10/page)</label>
-  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="50"> 🖥 English DTP (₹50/page)</label>
-  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="80"> 🖥 Odia DTP (₹80/page)</label>
-  <label style="background:#222;padding:12px 15px;border-radius:15px; border:1px solid #FFD700; cursor:pointer;"><input type="checkbox" class="calcService" value="30"> 📑 Lamination (₹30/page)</label>
+<div class="container">
+<div class="card">
+📄 Xerox (₹2/page)<br>
+<input type="number" id="xeroxPages" placeholder="Number of pages" min="0">
 </div>
-<input type="number" id="pages" placeholder="Enter number of pages" style="padding:10px;margin:10px; width:200px;">
-<br><br>
-<button onclick="calculateMultiple()" style="padding:10px 20px;background:gold;border:none;border-radius:20px;">Calculate Total Price</button>
-<h3 id="result"></h3>
+<div class="card">
+🖥 English DTP (₹50/page)<br>
+<input type="number" id="dtpPages" placeholder="Number of pages" min="0">
+</div>
+<div class="card">
+📑 Lamination (₹30/page)<br>
+<input type="number" id="laminationPages" placeholder="Number of pages" min="0">
+</div>
+</div>
+<br>
+<button onclick="calculateMultiServices()" style="padding:10px 20px;background:gold;border:none;border-radius:20px;">Calculate Total Price</button>
+<h3 id="multiResult"></h3>
 
 <script>
-function calculateMultiple(){
-  var pages = Number(document.getElementById("pages").value);
-  var services = document.querySelectorAll(".calcService:checked");
-  var total = 0;
-  services.forEach(function(service){
-    total += Number(service.value) * pages;
-  });
-  if(services.length === 0){
-    document.getElementById("result").innerHTML = "Please select at least one service.";
-  } else if(pages <= 0){
-    document.getElementById("result").innerHTML = "Please enter number of pages.";
-  } else{
-    document.getElementById("result").innerHTML = "Total Price: ₹" + total;
-  }
+function calculateMultiServices(){
+  var xerox = Number(document.getElementById("xeroxPages").value) || 0;
+  var dtp = Number(document.getElementById("dtpPages").value) || 0;
+  var lamination = Number(document.getElementById("laminationPages").value) || 0;
+
+  var total = (xerox * 2) + (dtp * 50) + (lamination * 30);
+
+  document.getElementById("multiResult").innerHTML = "Total Price: ₹" + total;
 }
 
+// Online Form functions
 function toggleFolder(){
   var folder = document.getElementById("folderOptions");
   folder.style.display = (folder.style.display === "flex") ? "none" : "flex";
@@ -163,39 +162,3 @@ function sendForm(service,event){
 function closeOffer(){ document.getElementById("offerPopup").style.display="none"; }
 window.onload=function(){ setTimeout(function(){ document.getElementById("offerPopup").style.display="flex"; },2000);}
 </script>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section class="section">
-<h2 class="gold">Why Choose Us?</h2>
-<div class="container">
-<div class="card">⚡ Fast Service Guarantee</div>
-<div class="card">💰 Affordable Pricing</div>
-<div class="card">🎓 Student Friendly</div>
-<div class="card">📍 In Front of New Court, Paralakhemundi</div>
-<div class="card">😊 Friendly & Helpful Service</div>
-<div class="card">✔ 1000+ Happy Customers</div>
-</div>
-</section>
-
-<!-- TRUST SECTION -->
-<section class="section">
-<h2 class="gold">Trusted Local Service</h2>
-<p>We are committed to providing fast, clear and affordable printing services for students, professionals and local residents.</p>
-</section>
-
-<!-- CONTACT -->
-<section class="contact">
-<h2 class="gold">Contact & Updates</h2>
-<p>📍 In Front of New Court, Paralakhemundi</p>
-<p>📞 +91 8917699445</p>
-<a href="https://wa.me/918917699445">Chat on WhatsApp</a>
-<a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
-<a href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">💼 Join Job Updates Group</a>
-</section>
-
-<!-- FLOATING THANK YOU SECTION -->
-<section id="thankYouSection">
-<h2 class="gold" style="font-size:32px;">🙏 Thank You for Visiting!</h2>
-<p style="color:#FFD700; font-size:18px; margin:15px 0;">We appreciate your visit and hope to see you again soon.</p>
-<a href="https://wa.me/918917699445" style="display:inline-block; padding
