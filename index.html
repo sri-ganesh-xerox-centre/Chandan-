@@ -165,8 +165,44 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 💼 Job Updates Group<br><br>Join our WhatsApp group for latest job updates!
 </a>
 
-</div>
-</section>
+<style>
+.pulseJobGroup{
+  position: relative;
+  overflow: hidden;
+  color: white; /* <-- text in white now */
+  font-weight:bold;
+  border-radius:20px;
+  border:2px solid #FFD700;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Yellow pulsing glow behind card */
+.pulseJobGroup::before{
+  content:'';
+  position:absolute;
+  top:-10%; left:-10%;
+  width:120%; height:120%;
+  background:radial-gradient(circle, rgba(255,223,0,0.4) 0%, rgba(255,223,0,0) 70%);
+  z-index:0;
+  border-radius:25px;
+  animation: pulseYellowGlow 2s infinite;
+}
+
+.pulseJobGroup > *{
+  position: relative; /* keep text above glow */
+  z-index:1;
+}
+
+@keyframes pulseYellowGlow{
+  0%,100%{transform:scale(1);opacity:0.5;}
+  50%{transform:scale(1.1);opacity:1;}
+}
+
+.pulseJobGroup:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 50px #FFD700;
+}
+</style>
 
 <!-- PRICE CALCULATOR -->
 <section class="section">
