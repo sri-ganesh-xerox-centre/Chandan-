@@ -27,17 +27,16 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 @keyframes pulseOffer{0%,100%{transform:scale(1);box-shadow:0 0 40px #FFD700;}50%{transform:scale(1.05);box-shadow:0 0 70px #FFD700;}}
 @keyframes buttonGlow{0%,100%{box-shadow:0 0 15px #FFD700;}50%{box-shadow:0 0 35px #FFD700;}}
 
-/* Sticky WhatsApp Button */
-#whatsappButton {position: fixed;bottom: 20px;right: 20px;background: #25D366;color: white;padding: 15px 20px;border-radius: 50px;text-decoration: none;font-weight: bold;font-size: 16px;box-shadow: 0 4px 12px rgba(0,0,0,0.3);transition: transform 0.3s, box-shadow 0.3s;z-index: 1000;}
-#whatsappButton:hover {transform: translateY(-3px);box-shadow: 0 6px 20px rgba(0,0,0,0.5);}
+/* Popup style */
+.popupBg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:2000;}
+.popupContent{background:linear-gradient(135deg,#222,#111);padding:25px;border-radius:20px;text-align:center;width:90%;max-width:400px;position:relative;box-shadow:0 0 40px rgba(255,215,0,0.7);}
+.popupContent h2{margin-bottom:15px;color:#FFD700;}
+.popupContent .option{padding:10px;border-radius:15px;background:#111;border:1px solid #FFD700;margin-top:10px;cursor:pointer;transition:0.3s;}
+.popupContent .option:hover{background:#FFD700;color:black;}
+.closeBtn{position:absolute;top:10px;right:15px;font-size:24px;font-weight:bold;cursor:pointer;color:#FFD700;}
 
-/* Collapsible Online Form Folder */
-#folderOptions{display:none;flex-direction:column;margin-top:15px;}
-.option{padding:10px;border-radius:15px;background:linear-gradient(135deg,#222,#111);border:1px solid #FFD700;cursor:pointer;transition:0.3s;box-shadow:0 0 10px rgba(255,215,0,0.2);font-weight:500;margin-top:5px;}
-.option:hover{background:linear-gradient(135deg,#FFD700,#ffb347);color:black;box-shadow:0 0 25px rgba(255,215,0,0.8);transform:translateY(-3px);}
-
-/* Job Updates Group Card - Pulse + Bounce */
-.pulseJobGroup{position: relative;overflow: hidden;color: white;font-weight:bold;border-radius:20px;border:2px solid #FFD700;transition: transform 0.3s, box-shadow 0.3s;animation: bouncePulse 2s infinite;}
+/* Job Updates Card */
+.pulseJobGroup{position: relative;overflow: hidden;color: white;font-weight:bold;border-radius:20px;border:2px solid #FFD700;transition: transform 0.3s, box-shadow 0.3s;animation: bouncePulse 2s infinite;margin-top:20px;}
 .pulseJobGroup::before{content:'';position:absolute;top:-10%; left:-10%;width:120%; height:120%;background:radial-gradient(circle, rgba(255,223,0,0.4) 0%, rgba(255,223,0,0) 70%);z-index:0;border-radius:25px;animation: pulseYellowGlow 2s infinite;}
 .pulseJobGroup > *{position: relative; z-index:1;}
 @keyframes pulseYellowGlow{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.1);opacity:1;}}
@@ -47,16 +46,6 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 /* Floating Thank You */
 #thankYouSection{background: linear-gradient(135deg, #222, #444, #222); padding:50px 20px; text-align:center; border-radius:20px; animation: floatGlow 3s infinite alternate;}
 @keyframes floatGlow {0% { transform: translateY(0); box-shadow: 0 0 20px rgba(255,215,0,0.3); } 50% { transform: translateY(-10px); box-shadow: 0 0 50px rgba(255,215,0,0.7); } 100% { transform: translateY(0); box-shadow: 0 0 20px rgba(255,215,0,0.3); }}
-
-/* Offer Popup */
-#offerPopup {position: fixed;top: 0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.6);display:flex;justify-content:center;align-items:center;z-index:2000;animation: fadeIn 0.6s; display:none;}
-#offerContent {background: linear-gradient(135deg,#FFD700,#ffb347);padding: 30px;border-radius: 20px;text-align:center;width: 90%;max-width:400px;box-shadow: 0 0 40px #FFD700; animation: floatPopup 2s infinite alternate;position:relative;}
-#offerContent h2, #offerContent p{color:black;margin-bottom:20px;}
-#offerContent a{display:inline-block;padding:12px 25px;background:#000;color:#FFD700;font-weight:bold;border-radius:25px;text-decoration:none;box-shadow:0 0 20px #FFD700;transition:0.3s;}
-#offerContent a:hover{transform: scale(1.05); box-shadow:0 0 35px #FFD700;}
-#closeOffer {position:absolute; top:10px; right:15px; font-size:24px; font-weight:bold; cursor:pointer; color:#000;}
-@keyframes floatPopup{0%{ transform: translateY(0);}50%{ transform: translateY(-10px);}100%{ transform: translateY(0);}}
-@keyframes fadeIn{0%{opacity:0;}100%{opacity:1;}}
 </style>
 </head>
 <body>
@@ -67,98 +56,155 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <p>Fast • Affordable • Trusted Service in Paralakhemundi</p>
 </header>
 
-<!-- SPECIAL OFFER BANNER -->
+<!-- Special Offer -->
 <section class="pulseOffer">
 <h2>🔥 Special Offer!</h2>
 <p>Get <strong>10% OFF</strong> on all orders above <strong>₹500</strong>!</p>
 <a href="https://wa.me/918917699445?text=Hello%20I%20want%20to%20avail%20the%2010%25%20off%20offer%20for%20orders%20above%20500.">Claim Offer on WhatsApp</a>
 </section>
 
-<!-- SERVICES -->
+<!-- Services -->
 <section class="section">
 <h2 class="gold">Our Services & Prices</h2>
 <div class="container">
+<a class="card" onclick="openOnlineForm()">🖥 Online Form Fillup<br><br><strong>₹150 per form</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Xerox%20service." target="_blank">📄 Xerox<br><br><strong>₹2 per page</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Black%20and%20White%20printing." target="_blank">🖨 Black & White Printing<br><br><strong>₹5 per page</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Colour%20printing." target="_blank">🎨 Colour Printing<br><br><strong>₹10 per page</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Lamination%20service." target="_blank">📑 Lamination<br><br><strong>₹30 per page</strong></a>
-
-<!-- Online Form Folder -->
-<div class="card" id="onlineFormCard" onclick="toggleFolder()">
-  🖥 Online Form Fillup<br><br>
-  <strong>₹150 per form</strong>
-  <div id="folderOptions">
-    <div class="option" onclick="sendForm('Cast Certificate', event)">📜 Cast Certificate</div>
-    <div class="option" onclick="sendForm('Residence Certificate', event)">🏠 Residence Certificate</div>
-    <div class="option" onclick="sendForm('Income Certificate', event)">💰 Income Certificate</div>
-    <div class="option" onclick="sendForm('Legal Heir', event)">🧾 Legal Heir</div>
-    <div class="option" onclick="sendForm('Pan Card', event)">🆔 Pan Card</div>
-    <div class="option" onclick="sendForm('Labour Card', event)">⚒ Labour Card</div>
-    <div class="option" onclick="sendForm('Police Verification', event)">👮 Police Verification</div>
-    <div class="option" onclick="sendForm('DL', event)">🚗 Driving License</div>
-    <div class="option" onclick="sendForm('New Current Connection', event)">🔌 New Current Connection</div>
-    <div class="option" onclick="sendForm('Other', event)">✏️ Other</div>
-  </div>
-</div>
-
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20DTP%20service%20(English%20or%20Odia)." target="_blank">🖥 DTP (English ₹50 | Odia ₹80)<br><br><small>Price varies by content</small></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank">📸 Passport Photo<br><br><strong>₹50</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank">📂 Spiral Binding<br><br><strong>Starting ₹150</strong></a>
 
 <!-- Job Updates Group -->
-<a class="card pulseJobGroup" href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">
-💼 Job Updates Group<br><br>Join our WhatsApp group for latest job updates!
-</a>
-
+<a class="card pulseJobGroup" onclick="openJobGroup()">💼 Job Updates Group<br><br>Join our WhatsApp group for latest job updates!</a>
 </div>
 </section>
+
+<!-- Online Form Popup -->
+<div class="popupBg" id="onlineFormPopup">
+  <div class="popupContent">
+    <span class="closeBtn" onclick="closeOnlineForm()">&times;</span>
+    <h2>Online Form Fillup</h2>
+
+    <div class="option" onclick="toggleFormOption('Cast Certificate')">📜 Cast Certificate</div>
+    <div class="option" onclick="toggleFormOption('Residence Certificate')">🏠 Residence Certificate</div>
+    <div class="option" onclick="toggleFormOption('Income Certificate')">💰 Income Certificate</div>
+    <div class="option" onclick="toggleFormOption('Legal Heir')">🧾 Legal Heir</div>
+    <div class="option" onclick="toggleFormOption('Pan Card')">🆔 Pan Card</div>
+    <div class="option" onclick="toggleFormOption('Labour Card')">⚒ Labour Card</div>
+    <div class="option" onclick="toggleFormOption('Police Verification')">👮 Police Verification</div>
+    <div class="option" onclick="toggleFormOption('DL')">🚗 Driving License</div>
+    <div class="option" onclick="toggleFormOption('New Current Connection')">🔌 New Current Connection</div>
+    <div class="option" onclick="toggleFormOption('Other')">✏️ Other</div>
+
+  </div>
+</div>
+
+<!-- Job Updates Popup -->
+<div class="popupBg" id="jobGroupPopup">
+  <div class="popupContent">
+    <span class="closeBtn" onclick="closeJobGroup()">&times;</span>
+    <h2>💼 Job Updates Group</h2>
+    <p>Join our WhatsApp group to get the latest job updates instantly!</p>
+    <a href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">Join Now</a>
+  </div>
+</div>
 
 <!-- MULTI-SERVICE PRICE CALCULATOR -->
 <section class="section">
 <h2 class="gold">Price Calculator</h2>
 <div class="container">
-<div class="card">
-📄 Xerox (₹2/page)<br>
-<input type="number" id="xeroxPages" placeholder="Number of pages" min="0">
-</div>
-<div class="card">
-🖥 English DTP (₹50/page)<br>
-<input type="number" id="dtpPages" placeholder="Number of pages" min="0">
-</div>
-<div class="card">
-📑 Lamination (₹30/page)<br>
-<input type="number" id="laminationPages" placeholder="Number of pages" min="0">
-</div>
+<div class="card">📄 Xerox (₹2/page)<br><input type="number" id="xeroxPages" placeholder="Number of pages" min="0"></div>
+<div class="card">🖨 B/W Print (₹5/page)<br><input type="number" id="bwPages" placeholder="Number of pages" min="0"></div>
+<div class="card">🎨 Colour Print (₹10/page)<br><input type="number" id="colorPages" placeholder="Number of pages" min="0"></div>
+<div class="card">📑 Lamination (₹30/page)<br><input type="number" id="laminationPages" placeholder="Number of pages" min="0"></div>
+<div class="card">🖥 English DTP (₹50/page)<br><input type="number" id="englishDtpPages" placeholder="Number of pages" min="0"></div>
+<div class="card">🖥 Odia DTP (₹80/page)<br><input type="number" id="odiaDtpPages" placeholder="Number of pages" min="0"></div>
+<div class="card">📸 Passport Photo (₹50)<br><input type="number" id="photoPages" placeholder="Number of photos" min="0"></div>
+<div class="card">📂 Spiral Binding (₹150)<br><input type="number" id="bindingPages" placeholder="Number of bindings" min="0"></div>
 </div>
 <br>
-<button onclick="calculateMultiServices()" style="padding:10px 20px;background:gold;border:none;border-radius:20px;">Calculate Total Price</button>
-<h3 id="multiResult"></h3>
+<button onclick="calculateAllServices()" style="padding:10px 20px;background:gold;border:none;border-radius:20px;">Calculate Total Price</button>
+<h3 id="allServicesResult"></h3>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section">
+<h2 class="gold">Why Choose Us?</h2>
+<div class="container">
+<div class="card">⚡ Fast Service Guarantee</div>
+<div class="card">💰 Affordable Pricing</div>
+<div class="card">🎓 Student Friendly</div>
+<div class="card">📍 In Front of New Court, Paralakhemundi</div>
+<div class="card">😊 Friendly & Helpful Service</div>
+<div class="card">✔ 1000+ Happy Customers</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+<h2 class="gold">Contact Us</h2>
+<p>📍 In Front of New Court, Paralakhemundi</p>
+<p>📞 +91 8917699445</p>
+<a href="https://wa.me/918917699445">Chat on WhatsApp</a>
+<a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
+</section>
+
+<!-- THANK YOU -->
+<section id="thankYouSection">
+<h2>🙏 Thank You for Visiting!</h2>
+<p>We appreciate your support. Come back soon!</p>
+</section>
+
+<footer>
+© 2026 Sri Ganesh Xerox Centre | All Rights Reserved
+</footer>
 
 <script>
-function calculateMultiServices(){
-  var xerox = Number(document.getElementById("xeroxPages").value) || 0;
-  var dtp = Number(document.getElementById("dtpPages").value) || 0;
-  var lamination = Number(document.getElementById("laminationPages").value) || 0;
+// Multi-service calculator
+function calculateAllServices(){
+  var xerox = Number(document.getElementById("xeroxPages").value)||0;
+  var bw = Number(document.getElementById("bwPages").value)||0;
+  var color = Number(document.getElementById("colorPages").value)||0;
+  var lamination = Number(document.getElementById("laminationPages").value)||0;
+  var englishDtp = Number(document.getElementById("englishDtpPages").value)||0;
+  var odiaDtp = Number(document.getElementById("odiaDtpPages").value)||0;
+  var photo = Number(document.getElementById("photoPages").value)||0;
+  var binding = Number(document.getElementById("bindingPages").value)||0;
 
-  var total = (xerox * 2) + (dtp * 50) + (lamination * 30);
-
-  document.getElementById("multiResult").innerHTML = "Total Price: ₹" + total;
+  var total = xerox*2 + bw*5 + color*10 + lamination*30 + englishDtp*50 + odiaDtp*80 + photo*50 + binding*150;
+  var discount=0, finalTotal=total;
+  if(total>=500){
+    discount = total*0.10;
+    finalTotal = total - discount;
+    document.getElementById("allServicesResult").innerHTML="Original Price: ₹"+total+"<br>Discount: ₹"+discount.toFixed(2)+"<br><strong>Total After 10% Off: ₹"+finalTotal.toFixed(2)+"</strong>";
+  }else{
+    document.getElementById("allServicesResult").innerHTML="Total Price: ₹"+total;
+  }
 }
 
-// Online Form functions
-function toggleFolder(){
-  var folder = document.getElementById("folderOptions");
-  folder.style.display = (folder.style.display === "flex") ? "none" : "flex";
+// Online form popup
+function openOnlineForm(){ document.getElementById("onlineFormPopup").style.display="flex"; }
+function closeOnlineForm(){ document.getElementById("onlineFormPopup").style.display="none"; }
+
+let currentOpen = null;
+function toggleFormOption(service){
+  if(currentOpen === service){
+    // Send WhatsApp message
+    let msg = encodeURIComponent("Hello, I want to apply for: " + service + " from Sri Ganesh Xerox Centre.");
+    window.open("https://wa.me/918917699445?text=" + msg, "_blank");
+    closeOnlineForm();
+    currentOpen = null;
+  } else {
+    currentOpen = service;
+    alert("Selected: " + service + "\nClick again to confirm and send to WhatsApp.");
+  }
 }
 
-function sendForm(service,event){
-  event.stopPropagation();
-  var message = encodeURIComponent("Hello, I want to apply for: " + service + " from Sri Ganesh Xerox Centre.");
-  var whatsappURL = "https://wa.me/918917699445?text=" + message;
-  window.open(whatsappURL,"_blank");
-}
-
-// Offer popup
-function closeOffer(){ document.getElementById("offerPopup").style.display="none"; }
-window.onload=function(){ setTimeout(function(){ document.getElementById("offerPopup").style.display="flex"; },2000);}
+// Job group popup
+function openJobGroup(){ document.getElementById("jobGroupPopup").style.display="flex"; }
+function closeJobGroup(){ document.getElementById("jobGroupPopup").style.display="none"; }
 </script>
+</body>
+</html>
