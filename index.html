@@ -29,10 +29,6 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 @keyframes pulseOffer{0%,100%{transform:scale(1);box-shadow:0 0 40px #FFD700;}50%{transform:scale(1.05);box-shadow:0 0 70px #FFD700;}}
 @keyframes buttonGlow{0%,100%{box-shadow:0 0 15px #FFD700;}50%{box-shadow:0 0 35px #FFD700;}}
 
-/* Thank You Section Animation */
-.fade-in{opacity:0;transform:translateY(50px);transition:all 1s ease-out;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
-
 /* Sticky WhatsApp Button */
 #whatsappButton {
   position: fixed;
@@ -49,10 +45,7 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
   transition: transform 0.3s, box-shadow 0.3s;
   z-index: 1000;
 }
-#whatsappButton:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-}
+#whatsappButton:hover {transform: translateY(-3px);box-shadow: 0 6px 20px rgba(0,0,0,0.5);}
 
 /* Collapsible Online Form Folder */
 #folderOptions{display:none;flex-direction:column;margin-top:15px;}
@@ -67,25 +60,19 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
   font-weight:500;
   margin-top:5px;
 }
-.option:hover{
-  background:linear-gradient(135deg,#FFD700,#ffb347);
-  color:black;
-  box-shadow:0 0 25px rgba(255,215,0,0.8);
-  transform:translateY(-3px);
-}
+.option:hover{background:linear-gradient(135deg,#FFD700,#ffb347);color:black;box-shadow:0 0 25px rgba(255,215,0,0.8);transform:translateY(-3px);}
 
-/* Subtle Yellow Pulse for Job Updates Group Card */
+/* Job Updates Group Card - Pulse + Bounce */
 .pulseJobGroup{
   position: relative;
   overflow: hidden;
-  color: black;
+  color: white;
   font-weight:bold;
   border-radius:20px;
   border:2px solid #FFD700;
   transition: transform 0.3s, box-shadow 0.3s;
+  animation: bouncePulse 2s infinite;
 }
-
-/* Yellow pulsing glow behind card */
 .pulseJobGroup::before{
   content:'';
   position:absolute;
@@ -96,21 +83,10 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
   border-radius:25px;
   animation: pulseYellowGlow 2s infinite;
 }
-
-.pulseJobGroup > *{
-  position: relative;
-  z-index:1;
-}
-
-@keyframes pulseYellowGlow{
-  0%,100%{transform:scale(1);opacity:0.5;}
-  50%{transform:scale(1.1);opacity:1;}
-}
-
-.pulseJobGroup:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 50px #FFD700;
-}
+.pulseJobGroup > *{position: relative; z-index:1;}
+@keyframes pulseYellowGlow{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.1);opacity:1;}}
+@keyframes bouncePulse{0%,100%{transform: translateY(0);}50%{transform: translateY(-8px);}}
+.pulseJobGroup:hover{transform:translateY(-5px);box-shadow:0 0 50px #FFD700;}
 </style>
 </head>
 <body>
@@ -160,49 +136,13 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank">📸 Passport Photo<br><br><strong>₹50</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank">📂 Spiral Binding<br><br><strong>Starting ₹150</strong></a>
 
-<!-- WHATSAPP JOB UPDATES GROUP CARD (Subtle Yellow Pulse) -->
+<!-- WHATSAPP JOB UPDATES GROUP CARD -->
 <a class="card pulseJobGroup" href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">
 💼 Job Updates Group<br><br>Join our WhatsApp group for latest job updates!
 </a>
 
-<style>
-.pulseJobGroup{
-  position: relative;
-  overflow: hidden;
-  color: white; /* <-- text in white now */
-  font-weight:bold;
-  border-radius:20px;
-  border:2px solid #FFD700;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Yellow pulsing glow behind card */
-.pulseJobGroup::before{
-  content:'';
-  position:absolute;
-  top:-10%; left:-10%;
-  width:120%; height:120%;
-  background:radial-gradient(circle, rgba(255,223,0,0.4) 0%, rgba(255,223,0,0) 70%);
-  z-index:0;
-  border-radius:25px;
-  animation: pulseYellowGlow 2s infinite;
-}
-
-.pulseJobGroup > *{
-  position: relative; /* keep text above glow */
-  z-index:1;
-}
-
-@keyframes pulseYellowGlow{
-  0%,100%{transform:scale(1);opacity:0.5;}
-  50%{transform:scale(1.1);opacity:1;}
-}
-
-.pulseJobGroup:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 50px #FFD700;
-}
-</style>
+</div>
+</section>
 
 <!-- PRICE CALCULATOR -->
 <section class="section">
@@ -227,23 +167,17 @@ function calculate(){
   var total=pages*rate;
   document.getElementById("result").innerHTML="Total Price: ₹"+total;
 }
-
-// COLLAPSIBLE FOLDER
 function toggleFolder(){
   var folder = document.getElementById("folderOptions");
   if(folder.style.display === "none" || folder.style.display === ""){
     folder.style.display = "flex";
-  } else {
-    folder.style.display = "none";
-  }
+  } else {folder.style.display = "none";}
 }
-
-// WhatsApp redirect for Online Form Items
-function sendForm(service, event){
+function sendForm(service,event){
   event.stopPropagation();
   var message = encodeURIComponent("Hello, I want to apply for: " + service + " from Sri Ganesh Xerox Centre.");
   var whatsappURL = "https://wa.me/918917699445?text=" + message;
-  window.open(whatsappURL, "_blank");
+  window.open(whatsappURL,"_blank");
 }
 </script>
 
@@ -277,21 +211,15 @@ function sendForm(service, event){
 </section>
 
 <!-- THANK YOU SECTION -->
-<section id="thankYouSection" class="section fade-in" style="background:#000; padding:50px 20px;">
-  <h2 class="gold">🙏 Thank You for Visiting!</h2>
-  <p style="color:#FFD700; font-size:18px;">We appreciate your visit and hope to see you again soon.</p>
-  <a href="https://wa.me/918917699445" style="display:inline-block;padding:12px 25px;
-     background:#FFD700;color:#000;font-weight:bold;border-radius:25px;text-decoration:none;margin-top:15px;">
-     Contact Us on WhatsApp
-  </a>
+<section id="thankYouSection" class="section" style="background:#111; padding:50px 20px; text-align:center;">
+<h2 class="gold">🙏 Thank You for Visiting!</h2>
+<p style="color:#FFD700; font-size:18px;">We appreciate your visit and hope to see you again soon.</p>
+<a href="https://wa.me/918917699445" style="display:inline-block;padding:12px 25px;background:#FFD700;color:#000;font-weight:bold;border-radius:25px;text-decoration:none;margin-top:15px;">Contact Us on WhatsApp</a>
 </section>
 
 <!-- STICKY WHATSAPP BUTTON -->
 <a href="https://wa.me/918917699445" target="_blank" id="whatsappButton">💬 WhatsApp</a>
 
-<footer>
-© 2026 Sri Ganesh Xerox Centre | All Rights Reserved
-</footer>
-
+<footer>© 2026 Sri Ganesh Xerox Centre | All Rights Reserved</footer>
 </body>
 </html>
