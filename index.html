@@ -1,207 +1,213 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Ganesh Xerox Centre</title>
+<title>Sri Ganesh Xerox Centre - Paralakhemundi</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFD700">
+
+<!-- AOS Library for Scroll Animations -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
 <style>
-
-body{
-  margin:0;
-  font-family:Arial;
-  background:#0f0f0f;
-  color:white;
-}
-
-header{
-  background:black;
-  padding:15px;
-  text-align:center;
-  font-size:22px;
-  color:gold;
-  font-weight:bold;
-}
-
-section{
-  padding:40px 20px;
-  text-align:center;
-}
-
-h2{
-  color:gold;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:linear-gradient(135deg,#000,#1a1a1a,#000);color:white;}
+.gold{background:linear-gradient(45deg,#FFD700,#ffb347,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+header{text-align:center;padding:50px 20px;}
+header img{width:95%;max-width:1000px;border-radius:20px;box-shadow:0 0 40px rgba(255,215,0,0.7);}
+header h1{margin-top:15px;}
+header p{margin-top:5px;color:#ddd;}
+.section{padding:70px 20px;text-align:center;background:#111;}
+.section h2{margin-bottom:40px;font-size:30px;}
+.container{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;}
 .card{
-  background:#111;
-  padding:20px;
-  margin:15px;
-  border-radius:15px;
-  box-shadow:0 0 10px rgba(255,215,0,0.3);
-}
-
-.feedback-box{
-  max-width:500px;
-  margin:auto;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.feedback-box input,
-.feedback-box textarea{
-  padding:10px;
-  border-radius:10px;
-  border:none;
-}
-
-button{
-  padding:10px;
-  border:none;
-  border-radius:10px;
-  font-weight:bold;
+  background:linear-gradient(135deg,#222,#111);
+  border:1px solid #FFD700;
+  width:260px;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 4px 15px rgba(255,215,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration:none;
+  color:white;
+  display:block;
   cursor:pointer;
-}
-
-.submit-btn{
-  background:gold;
-  color:black;
-}
-
-.star-rating{
-  font-size:30px;
-  cursor:pointer;
-  color:gray;
-}
-
-.star-rating span.active{
-  color:gold;
-}
-
-footer{
-  background:black;
-  padding:15px;
   text-align:center;
-  margin-top:40px;
 }
-
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 60px rgba(255,215,0,0.8);
+}
+.contact{padding:70px 20px;text-align:center;background:#000;}
+.contact a{display:inline-block;margin:10px;padding:12px 25px;background:linear-gradient(45deg,#FFD700,#ffb347);color:black;border-radius:30px;text-decoration:none;font-weight:600;transition:transform 0.3s;}
+.contact a:hover{transform:scale(1.1);}
+footer{text-align:center;padding:20px;background:#111;color:#aaa;}
+.pulseOffer{background:linear-gradient(135deg,#FFD700,#ffb347);border-radius:20px;margin:25px 5px;padding:25px;text-align:center;box-shadow:0 0 50px rgba(255,215,0,0.7);animation:pulseOffer 2s infinite;}
+.pulseOffer h2, .pulseOffer p{color:black;}
+.pulseOffer a{display:inline-block;padding:12px 25px;background:#000;color:#FFD700;font-weight:700;border-radius:25px;text-decoration:none;box-shadow:0 0 25px #FFD700;transition:0.4s;animation:buttonGlow 2s infinite;}
+@keyframes pulseOffer{0%,100%{transform:scale(1);box-shadow:0 0 40px #FFD700;}50%{transform:scale(1.05);box-shadow:0 0 70px #FFD700;}}
+@keyframes buttonGlow{0%,100%{box-shadow:0 0 15px #FFD700;}50%{box-shadow:0 0 35px #FFD700;}}
+.popupBg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:2000;opacity:0;transition:opacity 0.4s;}
+.popupBg.show{display:flex;opacity:1;}
+.popupContent{background:linear-gradient(135deg,#222,#111);padding:25px;border-radius:20px;text-align:center;width:90%;max-width:400px;position:relative;box-shadow:0 0 40px rgba(255,215,0,0.7);}
+.popupContent h2{margin-bottom:15px;color:#FFD700;}
+.popupContent .option{padding:10px;border-radius:15px;background:#111;border:1px solid #FFD700;margin-top:10px;cursor:pointer;transition:0.3s;}
+.popupContent .option:hover{background:#FFD700;color:black;}
+.closeBtn{position:absolute;top:10px;right:15px;font-size:24px;font-weight:bold;cursor:pointer;color:#FFD700;}
+.pulseJobGroup{position: relative;overflow: hidden;color: white;font-weight:bold;border-radius:20px;border:2px solid #FFD700;transition: transform 0.3s, box-shadow 0.3s;animation: bouncePulse 2s infinite;margin-top:20px;}
+.pulseJobGroup::before{content:'';position:absolute;top:-10%; left:-10%;width:120%; height:120%;background:radial-gradient(circle, rgba(255,223,0,0.4) 0%, rgba(255,223,0,0) 70%);z-index:0;border-radius:25px;animation: pulseYellowGlow 2s infinite;}
+.pulseJobGroup > *{position: relative; z-index:1;}
+@keyframes pulseYellowGlow{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.1);opacity:1;}}
+@keyframes bouncePulse{0%,100%{transform: translateY(0);}50%{transform: translateY(-8px);}}
+#thankYouSection{background: linear-gradient(135deg, #222, #444, #222); padding:50px 20px; text-align:center; border-radius:20px; animation: floatGlow 3s infinite alternate;}
+@keyframes floatGlow {0% { transform: translateY(0); box-shadow: 0 0 20px rgba(255,215,0,0.3); } 50% { transform: translateY(-10px); box-shadow: 0 0 50px rgba(255,215,0,0.7); } 100% { transform: translateY(0); box-shadow: 0 0 20px rgba(255,215,0,0.3); }}
+@media(max-width:600px){.container{flex-direction:column;gap:20px;}header img{width:100%;}}
+input, select, button{margin:5px; padding:10px; border-radius:15px; border:none; font-size:16px;}
+button{background:gold; cursor:pointer;}
 </style>
 </head>
-
 <body>
 
-<header>
-Sri Ganesh Xerox Centre
+<header data-aos="fade-down">
+<img src="logo.jpg" alt="Sri Ganesh Xerox Centre Logo">
+<h1 class="gold">Sri Ganesh Xerox Centre</h1>
+<p>Fast • Affordable • Trusted Service in Paralakhemundi</p>
 </header>
 
-<!-- HOME -->
-<section>
-<h2>Welcome</h2>
-<div class="card">
-We provide Xerox, Printout, Lamination, Online Services and more.
-Fast Service | Best Price | Quality Work
+<!-- Special Offer -->
+<section class="pulseOffer" data-aos="zoom-in">
+<h2>🔥 Special Offer!</h2>
+<p>Get <strong>10% OFF</strong> on all orders above <strong>₹500</strong>!</p>
+<a href="https://wa.me/918917699445?text=Hello%20I%20want%20to%20avail%20the%2010%25%20off%20offer%20for%20orders%20above%20500.">Claim Offer on WhatsApp</a>
+</section>
+
+<!-- Services Section -->
+<section class="section">
+<h2 class="gold" data-aos="fade-up">Our Services & Prices</h2>
+<div class="container">
+<a class="card" onclick="openOnlineForm()" data-aos="fade-up">🖥 Online Form Fillup<br><br><strong>₹150 per form</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Xerox%20service." target="_blank" data-aos="fade-up">📄 Xerox<br><br><strong>₹2 per page</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Black%20and%20White%20printing." target="_blank" data-aos="fade-up">🖨 Black & White Printing<br><br><strong>₹5 per page</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Colour%20printing." target="_blank" data-aos="fade-up">🎨 Colour Printing<br><br><strong>₹10 per page</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Lamination%20service." target="_blank" data-aos="fade-up">📑 Lamination<br><br><strong>₹30 per page</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20DTP%20service%20(English%20or%20Odia)." target="_blank" data-aos="fade-up">🖥 DTP (English ₹50 | Odia ₹80)<br><br><small>Price varies by content</small></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank" data-aos="fade-up">📸 Passport Photo<br><br><strong>₹50</strong></a>
+<a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank" data-aos="fade-up">📂 Spiral Binding<br><br><strong>Starting ₹150</strong></a>
+
+<!-- Job Updates -->
+<a class="card pulseJobGroup" onclick="openJobGroup()" data-aos="fade-up">💼 Job Updates Group<br><br>Join our WhatsApp group for latest job updates!</a>
 </div>
 </section>
 
-<!-- SERVICES -->
-<section>
-<h2>Our Services</h2>
-
-<div class="card">📄 Xerox (B/W & Color)</div>
-<div class="card">🖨 Printout (A4, Legal)</div>
-<div class="card">📑 Lamination</div>
-<div class="card">💻 Online Form Fillup</div>
-<div class="card">📸 Photo Print</div>
-
-</section>
-
-<!-- PRICE LIST -->
-<section>
-<h2>Price List</h2>
-<div class="card">Black & White Xerox – ₹2</div>
-<div class="card">Color Xerox – ₹10</div>
-<div class="card">Printout – ₹5</div>
-<div class="card">Lamination – ₹20</div>
-</section>
-
-<!-- CONTACT -->
-<section>
-<h2>Contact Us</h2>
-<div class="card">
-📍 In Front of New Court, Paralakhemundi<br><br>
-📞 8917699445
+<!-- Multi-Service Price Calculator -->
+<section class="section">
+<h2 class="gold" data-aos="fade-up">Price Calculator</h2>
+<div data-aos="fade-up">
+<label>Xerox (₹2): </label><input type="number" id="xeroxQty" placeholder="0" min="0"><br>
+<label>B/W Print (₹5): </label><input type="number" id="bwQty" placeholder="0" min="0"><br>
+<label>Colour Print (₹10): </label><input type="number" id="colorQty" placeholder="0" min="0"><br>
+<label>DTP (English ₹50 / Odia ₹80): </label><input type="number" id="dtpQty" placeholder="0" min="0"><br>
+<label>Lamination (₹30): </label><input type="number" id="lamQty" placeholder="0" min="0"><br>
+<button onclick="calculateTotal()">Calculate Total</button>
+<h3 id="totalResult"></h3>
 </div>
 </section>
 
-<!-- FEEDBACK (LAST SECTION) -->
-<section>
-<h2>⭐ Customer Feedback</h2>
-
-<div class="feedback-box">
-
-<input type="text" id="custName" placeholder="Your Name">
-<input type="number" id="custMobile" placeholder="Mobile Number">
-
-<div class="star-rating">
-  <span onclick="rate(1)">★</span>
-  <span onclick="rate(2)">★</span>
-  <span onclick="rate(3)">★</span>
-  <span onclick="rate(4)">★</span>
-  <span onclick="rate(5)">★</span>
+<!-- Online Form Popup -->
+<div class="popupBg" id="onlineFormPopup">
+  <div class="popupContent">
+    <span class="closeBtn" onclick="closeOnlineForm()">&times;</span>
+    <h2>Online Form Fillup</h2>
+    <div class="option" onclick="toggleFormOption('Cast Certificate')">📜 Cast Certificate</div>
+    <div class="option" onclick="toggleFormOption('Residence Certificate')">🏠 Residence Certificate</div>
+    <div class="option" onclick="toggleFormOption('Income Certificate')">💰 Income Certificate</div>
+    <div class="option" onclick="toggleFormOption('Legal Heir')">🧾 Legal Heir</div>
+    <div class="option" onclick="toggleFormOption('Pan Card')">🆔 Pan Card</div>
+    <div class="option" onclick="toggleFormOption('Labour Card')">⚒ Labour Card</div>
+    <div class="option" onclick="toggleFormOption('Police Verification')">👮 Police Verification</div>
+    <div class="option" onclick="toggleFormOption('DL')">🚗 Driving License</div>
+    <div class="option" onclick="toggleFormOption('New Current Connection')">🔌 New Current Connection</div>
+    <div class="option" onclick="toggleFormOption('Other')">✏️ Other</div>
+  </div>
 </div>
 
-<textarea id="custMessage" placeholder="Write your feedback..."></textarea>
-
-<button class="submit-btn" onclick="submitFeedback()">Submit Feedback</button>
-
+<!-- Job Updates Popup -->
+<div class="popupBg" id="jobGroupPopup">
+  <div class="popupContent">
+    <span class="closeBtn" onclick="closeJobGroup()">&times;</span>
+    <h2>💼 Job Updates Group</h2>
+    <p>Join our WhatsApp group to get the latest job updates instantly!</p>
+    <a href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">Join Now</a>
+  </div>
 </div>
 
+<!-- Floating Thank You -->
+<section id="thankYouSection" data-aos="fade-up">
+<h2>🙏 Thank You for Visiting!</h2>
+<p>We appreciate your support. Come back soon!</p>
 </section>
 
-<footer>
+<!-- Contact -->
+<section class="contact" data-aos="fade-up">
+<h2 class="gold">Contact Us</h2>
+<p>📍 In Front of New Court, Paralakhemundi</p>
+<p>📞 +91 8917699445</p>
+<a href="https://wa.me/918917699445">Chat on WhatsApp</a>
+<a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
+</section>
+
+<footer data-aos="fade-up">
 © 2026 Sri Ganesh Xerox Centre | All Rights Reserved
 </footer>
 
 <script>
+// Initialize AOS
+AOS.init({ duration: 1000 });
 
-let selectedRating = 0;
-
-function rate(stars){
-  selectedRating = stars;
-  let starsEl = document.querySelectorAll(".star-rating span");
-  starsEl.forEach((star,index)=>{
-    star.classList.toggle("active", index < stars);
-  });
+// Multi-Service Price Calculator
+function calculateTotal(){
+  let total = 0;
+  total += (parseInt(document.getElementById("xeroxQty").value)||0) * 2;
+  total += (parseInt(document.getElementById("bwQty").value)||0) * 5;
+  total += (parseInt(document.getElementById("colorQty").value)||0) * 10;
+  total += (parseInt(document.getElementById("dtpQty").value)||0) * 50; // Default English
+  total += (parseInt(document.getElementById("lamQty").value)||0) * 30;
+  
+  // Apply 10% off if total > 500
+  let discount = 0;
+  if(total > 500) discount = total * 0.1;
+  document.getElementById("totalResult").innerHTML = "Total Price: ₹"+total+"<br>Discount: ₹"+discount+"<br>Final Price: ₹"+(total-discount);
 }
 
-function submitFeedback(){
-  let name = document.getElementById("custName").value;
-  let mobile = document.getElementById("custMobile").value;
-  let message = document.getElementById("custMessage").value;
-
-  if(name==="" || mobile==="" || message==="" || selectedRating===0){
-    alert("Please fill all fields");
-    return;
+// Online Form Popup
+function openOnlineForm(){ document.getElementById("onlineFormPopup").classList.add("show"); }
+function closeOnlineForm(){ document.getElementById("onlineFormPopup").classList.remove("show"); }
+let currentOpen = null;
+function toggleFormOption(service){
+  if(currentOpen === service){
+    let msg = encodeURIComponent("Hello, I want to apply for: " + service + " from Sri Ganesh Xerox Centre.");
+    window.open("https://wa.me/918917699445?text=" + msg, "_blank");
+    closeOnlineForm();
+    currentOpen = null;
+  } else {
+    currentOpen = service;
+    alert("Selected: " + service + "\nClick again to confirm and send to WhatsApp.");
   }
-
-  let text = encodeURIComponent(
-    "Customer Feedback\n\n"+
-    "Name: "+name+"\n"+
-    "Mobile: "+mobile+"\n"+
-    "Rating: "+selectedRating+" Stars\n"+
-    "Message: "+message
-  );
-
-  window.open("https://wa.me/918917699445?text="+text,"_blank");
-
-  alert("Thank you for your feedback!");
-
-  document.getElementById("custName").value="";
-  document.getElementById("custMobile").value="";
-  document.getElementById("custMessage").value="";
-  rate(0);
 }
 
+// Job Group Popup
+function openJobGroup(){ document.getElementById("jobGroupPopup").classList.add("show"); }
+function closeJobGroup(){ document.getElementById("jobGroupPopup").classList.remove("show"); }
+
+// Service Worker for PWA
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('service-worker.js').then(()=>console.log('SW Registered')).catch(err=>console.log(err));
+}
 </script>
 
 </body>
