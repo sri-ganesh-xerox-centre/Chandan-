@@ -73,6 +73,21 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
   box-shadow:0 0 25px rgba(255,215,0,0.8);
   transform:translateY(-3px);
 }
+
+/* Pulsing effect for Job Updates Group Card */
+.pulseJobGroup{
+  animation: pulseJob 2s infinite;
+  border:2px solid #25D366;
+  box-shadow:0 0 20px #25D366;
+}
+@keyframes pulseJob{
+  0%,100%{transform:scale(1);box-shadow:0 0 20px #25D366;}
+  50%{transform:scale(1.05);box-shadow:0 0 50px #25D366;}
+}
+.pulseJobGroup:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 70px #25D366;
+}
 </style>
 </head>
 <body>
@@ -122,6 +137,11 @@ footer{text-align:center;padding:20px;background:#111;color:#aaa;}
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Passport%20Photo%20Print." target="_blank">📸 Passport Photo<br><br><strong>₹50</strong></a>
 <a class="card" href="https://wa.me/918917699445?text=Hello%20I%20want%20Spiral%20Binding%20service." target="_blank">📂 Spiral Binding<br><br><strong>Starting ₹150</strong></a>
 
+<!-- WHATSAPP JOB UPDATES GROUP CARD (Glowing/Pulsing) -->
+<a class="card pulseJobGroup" href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">
+💼 Job Updates Group<br><br>Join our WhatsApp group for latest job updates!
+</a>
+
 </div>
 </section>
 
@@ -149,16 +169,6 @@ function calculate(){
   document.getElementById("result").innerHTML="Total Price: ₹"+total;
 }
 
-// Fade-in animation for Thank You section
-window.addEventListener('scroll', function(){
-  var thankSection = document.getElementById('thankYouSection');
-  var position = thankSection.getBoundingClientRect().top;
-  var windowHeight = window.innerHeight;
-  if(position < windowHeight - 100){
-    thankSection.classList.add('visible');
-  }
-});
-
 // COLLAPSIBLE FOLDER
 function toggleFolder(){
   var folder = document.getElementById("folderOptions");
@@ -169,9 +179,9 @@ function toggleFolder(){
   }
 }
 
-// WhatsApp redirect
+// WhatsApp redirect for Online Form Items
 function sendForm(service, event){
-  event.stopPropagation(); // Prevent folder toggle
+  event.stopPropagation();
   var message = encodeURIComponent("Hello, I want to apply for: " + service + " from Sri Ganesh Xerox Centre.");
   var whatsappURL = "https://wa.me/918917699445?text=" + message;
   window.open(whatsappURL, "_blank");
@@ -199,11 +209,12 @@ function sendForm(service, event){
 
 <!-- CONTACT -->
 <section class="contact">
-<h2 class="gold">Contact Us</h2>
+<h2 class="gold">Contact & Updates</h2>
 <p>📍 In Front of New Court, Paralakhemundi</p>
 <p>📞 +91 8917699445</p>
 <a href="https://wa.me/918917699445">Chat on WhatsApp</a>
 <a href="https://maps.app.goo.gl/xa3WznAaykD7ukt89">Open Location</a>
+<a href="https://chat.whatsapp.com/JFnra4GkMa0DvVHnbOqNoY?mode=gi_t" target="_blank">💼 Join Job Updates Group</a>
 </section>
 
 <!-- THANK YOU SECTION -->
