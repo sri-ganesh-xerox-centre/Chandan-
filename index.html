@@ -6,7 +6,6 @@
 <title>Sri Ganesh Xerox Centre - Paralakhemundi</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#FFD700">
 
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -96,12 +95,12 @@ button{background:gold;cursor:pointer;}
 <h2 class="gold">Our Services</h2>
 <div class="container">
 
-<a class="card" onclick="openOnlineForm()">🖥 Online Form Fillup<br><br>₹150 per form</a>
-<a class="card" href="https://wa.me/918917699445">📄 Xerox ₹2</a>
-<a class="card" href="https://wa.me/918917699445">🖨 B/W Print ₹5</a>
-<a class="card" href="https://wa.me/918917699445">🎨 Colour Print ₹10</a>
-<a class="card" href="https://wa.me/918917699445">📑 Lamination ₹30</a>
-<a class="card" href="https://wa.me/918917699445">📸 Passport Photo ₹50</a>
+<a class="card" onclick="sendServiceWhatsApp('Online Form Fillup')">🖥 Online Form Fillup</a>
+<a class="card" onclick="sendServiceWhatsApp('Xerox')">📄 Xerox</a>
+<a class="card" onclick="sendServiceWhatsApp('B/W Print')">🖨 B/W Print</a>
+<a class="card" onclick="sendServiceWhatsApp('Colour Print')">🎨 Colour Print</a>
+<a class="card" onclick="sendServiceWhatsApp('Lamination')">📑 Lamination</a>
+<a class="card" onclick="sendServiceWhatsApp('Passport Photo')">📸 Passport Photo</a>
 <a class="card pulseJobGroup" onclick="openJobGroup()">💼 Job Updates Group</a>
 
 </div>
@@ -114,7 +113,7 @@ button{background:gold;cursor:pointer;}
 <label>Xerox (₹2)</label>
 <input type="number" id="xeroxQty" min="0"><br>
 
-<label>B/W Print (₹5)</label>
+<label>B/W Print (₹5, ₹3 if >100 pages)</label>
 <input type="number" id="bwQty" min="0"><br>
 
 <label>Colour Print (₹10)</label>
@@ -133,36 +132,6 @@ button{background:gold;cursor:pointer;}
 <button onclick="calculateTotal()">Calculate Total</button>
 <h3 id="totalResult"></h3>
 </section>
-
-<!-- Online Form Popup -->
-<div class="popupBg" id="onlineFormPopup">
-<div class="popupContent">
-<span class="closeBtn" onclick="closeOnlineForm()">&times;</span>
-<h2>Online Form Fillup</h2>
-
-<div class="option" onclick="selectService('Cast Certificate')">Cast Certificate</div>
-<div class="option" onclick="selectService('Residence Certificate')">Residence Certificate</div>
-<div class="option" onclick="selectService('Income Certificate')">Income Certificate</div>
-<div class="option" onclick="selectService('Legal Heir')">Legal Heir</div>
-<div class="option" onclick="selectService('Pan Card')">Pan Card</div>
-<div class="option" onclick="selectService('Labour Card')">Labour Card</div>
-<div class="option" onclick="selectService('Police Verification')">Police Verification</div>
-<div class="option" onclick="selectService('Driving License')">Driving License</div>
-<div class="option" onclick="selectService('New Current Connection')">New Current Connection</div>
-<div class="option" onclick="selectService('Other')">Other</div>
-
-</div>
-</div>
-
-<!-- Confirm Popup -->
-<div class="popupBg" id="confirmPopup">
-<div class="popupContent">
-<span class="closeBtn" onclick="closeConfirmPopup()">&times;</span>
-<h2 id="confirmTitle"></h2>
-<p id="confirmText"></p>
-<button onclick="sendToWhatsApp()">Confirm & Send</button>
-</div>
-</div>
 
 <!-- Job Group Popup -->
 <div class="popupBg" id="jobGroupPopup">
@@ -193,42 +162,34 @@ button{background:gold;cursor:pointer;}
 <script>
 AOS.init();
 
+// Price Calculator
 function calculateTotal(){
-let total=0;
-total+=(parseInt(xeroxQty.value)||0)*2;
-total+=(parseInt(bwQty.value)||0)*5;
-total+=(parseInt(colorQty.value)||0)*10;
-total+=(parseInt(dtpQty.value)||0)*parseInt(dtpType.value);
-total+=(parseInt(lamQty.value)||0)*30;
+  let total=0;
+  total += (parseInt(document.getElementById('xeroxQty').value)||0)*2;
 
-let discount=0;
-if(total>500) discount=total*0.1;
+  let bwQty = parseInt(document.getElementById('bwQty').value)||0;
+  if(bwQty>100) total += bwQty*3; // ₹3 per page if >100
+  else total += bwQty*5;
 
-totalResult.innerHTML="Total: ₹"+total+"<br>Discount: ₹"+discount+"<br><strong>Final: ₹"+(total-discount)+"</strong>";
+  total += (parseInt(document.getElementById('colorQty').value)||0)*10;
+  total += (parseInt(document.getElementById('dtpQty').value)||0) * parseInt(document.getElementById('dtpType').value);
+  total += (parseInt(document.getElementById('lamQty').value)||0)*30;
+
+  let discount=0;
+  if(total>500) discount=total*0.1;
+
+  document.getElementById('totalResult').innerHTML="Total: ₹"+total+"<br>Discount: ₹"+discount+"<br><strong>Final: ₹"+(total-discount)+"</strong>";
 }
 
-function openOnlineForm(){onlineFormPopup.classList.add("show");}
-function closeOnlineForm(){onlineFormPopup.classList.remove("show");}
-
-let selectedService="";
-function selectService(service){
-selectedService=service;
-confirmTitle.innerText="Confirm "+service;
-confirmText.innerText="Do you want to apply for "+service+"?";
-confirmPopup.classList.add("show");
+// WhatsApp pre-filled message for each service
+function sendServiceWhatsApp(service){
+  let msg = encodeURIComponent("Hello, I want to do " + service + " at Sri Ganesh Xerox Centre.");
+  window.open("https://wa.me/918917699445?text=" + msg,"_blank");
 }
 
-function closeConfirmPopup(){confirmPopup.classList.remove("show");}
-
-function sendToWhatsApp(){
-let msg=encodeURIComponent("Hello, I want to apply for: "+selectedService+" from Sri Ganesh Xerox Centre.");
-window.open("https://wa.me/918917699445?text="+msg,"_blank");
-closeConfirmPopup();
-closeOnlineForm();
-}
-
-function openJobGroup(){jobGroupPopup.classList.add("show");}
-function closeJobGroup(){jobGroupPopup.classList.remove("show");}
+// Job Group popup
+function openJobGroup(){document.getElementById('jobGroupPopup').classList.add('show');}
+function closeJobGroup(){document.getElementById('jobGroupPopup').classList.remove('show');}
 </script>
 
 </body>
